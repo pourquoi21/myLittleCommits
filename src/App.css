@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Sofia+Sans+Extra+Condensed:wght@100&display=swap");
+
+.App {
+  font-family: "Noto Sans KR", sans-serif;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.startContent-ul {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.startContent-ul li {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  height: 50px;
+  padding: 0 1px 0 7px;
+}
+
+.startContent-ul li:hover {
+  background: darkblue;
+  color: white;
+}
+
+.startContent-ul img {
+  margin-right: 10px;
+}
+
+.startContent-ul hr {
+  width: 100%;
+  height: 1px;
+  border-radius: 5px;
+}
+
+.startContent-arrow {
+  margin-left: auto;
+  font-size: 12px;
+  font-family: "Sofia Sans Extra Condensed", sans-serif;
+}
+
+.StartDetails-ul {
+  width: 100%;
+}
+
+.StartDetails-ul li {
+  display: flex;
+  color: #2c2c2c;
+  align-items: center;
+  font-size: 13px;
+  height: 25px;
+  padding: 0 1px;
+}
+
+.StartDetails-ul img {
+  margin-right: 0;
+}
