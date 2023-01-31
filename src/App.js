@@ -6,70 +6,75 @@ import "./App.css";
 
 function App() {
   function MainWindow() {
-    function StartContent() {
-      function StartDetails1() {
-        return (
+    function StartDetails1() {
+      return (
+        <div
+          style={{
+            position: "absolute",
+            top: "-50%",
+            left: "218px",
+            width: "170px",
+            boxSizing: "border-box",
+          }}
+          className="window"
+        >
           <div
+            className="window-body"
             style={{
-              position: "absolute",
-              top: "-50%",
-              left: "220px",
-              width: "170px",
-              boxSizing: "border-box",
+              padding: "1px 2px",
+              margin: 0,
+              display: "flex",
+              fontFamily: "Noto Sans KR",
+              fontWeight: 300,
             }}
-            className="window"
           >
-            <div
-              className="window-body"
-              style={{
-                padding: "1px 2px",
-                margin: 0,
-                display: "flex",
-                fontFamily: "Noto Sans KR",
-                fontWeight: 300,
-              }}
-            >
-              <ul className="StartDetails-ul">
-                <li>
-                  <img
-                    src={require(`../src/logo.svg`).default}
-                    style={{ width: "25px" }}
-                  />
-                  HTML
-                </li>
-                <li>
-                  <img
-                    src={require(`../src/logo.svg`).default}
-                    style={{ width: "25px" }}
-                  />
-                  CSS
-                </li>
-                <li>
-                  <img
-                    src={require(`../src/logo.svg`).default}
-                    style={{ width: "25px" }}
-                  />
-                  JavaScript
-                </li>
-                <li>
-                  <img
-                    src={require(`../src/logo.svg`).default}
-                    style={{ width: "25px" }}
-                  />
-                  React
-                </li>
-                <li>
-                  <img
-                    src={require(`../src/logo.svg`).default}
-                    style={{ width: "25px" }}
-                  />
-                  TypeScript
-                </li>
-              </ul>
-            </div>
+            <ul className="StartDetails-ul">
+              <li>
+                <img
+                  src={require(`../src/logo.svg`).default}
+                  style={{ width: "25px" }}
+                />
+                HTML
+              </li>
+              <li>
+                <img
+                  src={require(`../src/logo.svg`).default}
+                  style={{ width: "25px" }}
+                />
+                CSS
+              </li>
+              <li>
+                <img
+                  src={require(`../src/logo.svg`).default}
+                  style={{ width: "25px" }}
+                />
+                JavaScript
+              </li>
+              <li>
+                <img
+                  src={require(`../src/logo.svg`).default}
+                  style={{ width: "25px" }}
+                />
+                React
+              </li>
+              <li>
+                <img
+                  src={require(`../src/logo.svg`).default}
+                  style={{ width: "25px" }}
+                />
+                TypeScript
+              </li>
+            </ul>
           </div>
-        );
-      }
+        </div>
+      );
+    }
+
+    function StartContent() {
+      const [isMouseOn, setIsMouseOn] = React.useState({
+        Detail1: false,
+      });
+      console.log(isMouseOn);
       return (
         <div
           style={{
@@ -108,7 +113,19 @@ function App() {
                 Internet Explorer
               </li>
               <hr />
-              <li style={{ position: "relative" }}>
+              <li
+                style={{ position: "relative" }}
+                onMouseOver={() =>
+                  setIsMouseOn((prev) => {
+                    return { ...prev, Detail1: true };
+                  })
+                }
+                onMouseLeave={() =>
+                  setIsMouseOn((prev) => {
+                    return { ...prev, Detail1: false };
+                  })
+                }
+              >
                 <img
                   src={require(`../src/images/windows-program.png`)}
                   style={{
@@ -117,7 +134,7 @@ function App() {
                 />
                 <span>프로그램(P)</span>
                 <div className="startContent-arrow">▶</div>
-                <StartDetails1 />
+                {isMouseOn.Detail1 && <StartDetails1 />}
               </li>
               <li>
                 <img
@@ -239,39 +256,39 @@ function App() {
       );
     }
     return (
+      // <div
+      //   style={{
+      //     width: "100%",
+      //     height: "100%",
+      //     boxSizing: "border-box",
+      //   }}
+      //   className="window"
+      // >
+      //   <div className="title-bar">
+      //     <div className="title-bar-text">Hello, I am Jara</div>
+      //     <div className="title-bar-controls">
+      //       <button aria-label="Minimize" />
+      //       <button aria-label="Maximize" />
+      //       <button aria-label="Close" />
+      //     </div>
+      //   </div>
+
       <div
         style={{
-          width: "100%",
           height: "100%",
-          boxSizing: "border-box",
+          width: "100%",
+          // boxSizing: "border-box",
+          backgroundColor: "#008080",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-        className="window"
       >
-        <div className="title-bar">
-          <div className="title-bar-text">Hello, I am Jara</div>
-          <div className="title-bar-controls">
-            <button aria-label="Minimize" />
-            <button aria-label="Maximize" />
-            <button aria-label="Close" />
-          </div>
-        </div>
-
-        <div
-          className="App"
-          style={{
-            height: "98%",
-            boxSizing: "border-box",
-            backgroundColor: "#fff",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <FirstAlert />
-          <StartLine />
-        </div>
+        <FirstAlert />
+        <StartLine />
       </div>
+      // </div>
     );
   }
 
