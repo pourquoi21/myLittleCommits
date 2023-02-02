@@ -7,13 +7,52 @@ import "./App.css";
 function App() {
   function MainWindow() {
     function StartDetails1() {
+      const [isMouseOn, setIsMouseOn] = React.useState({
+        Deep1: false,
+      });
+      function StartDeepDetail1() {
+        return (
+          <div
+            style={{
+              position: "absolute",
+              top: "50px",
+              left: "145px",
+              width: "120px",
+              boxSizing: "border-box",
+            }}
+            className="window"
+          >
+            <div
+              className="window-body"
+              style={{
+                padding: "1px 2px",
+                margin: 0,
+                display: "flex",
+                alignItems: "center",
+                fontFamily: "Noto Sans KR",
+                fontWeight: 300,
+              }}
+            >
+              <ul className="StartDeepDetail-ul">
+                <li>
+                  <img
+                    src={require(`../src/images/windows-ie.png`)}
+                    style={{ width: "16px", margin: "0 5px 0 3px" }}
+                  />
+                  <span>페이지 보기</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        );
+      }
       return (
         <div
           style={{
             position: "absolute",
             top: "-50%",
             left: "218px",
-            width: "170px",
+            width: "150px",
             boxSizing: "border-box",
           }}
           className="window"
@@ -28,41 +67,58 @@ function App() {
               fontWeight: 300,
             }}
           >
+            {isMouseOn.Deep1 && (
+              <StartDeepDetail1 isMouseOn={isMouseOn.Deep1} />
+            )}
             <ul className="StartDetails-ul">
               <li>
                 <img
-                  src={require(`../src/logo.svg`).default}
-                  style={{ width: "25px" }}
+                  src={require(`../src/images/windows-program.png`)}
+                  style={{ width: "16px", margin: "0 5px 0 3px" }}
                 />
-                HTML
+                <span>HTML</span>
               </li>
               <li>
                 <img
-                  src={require(`../src/logo.svg`).default}
-                  style={{ width: "25px" }}
+                  src={require(`../src/images/windows-program.png`)}
+                  style={{ width: "16px", margin: "0 5px 0 3px" }}
                 />
-                CSS
+                <span>CSS</span>
+              </li>
+              <li
+                onMouseOver={() =>
+                  setIsMouseOn((prev) => {
+                    return { ...prev, Deep1: true };
+                  })
+                }
+                onMouseLeave={() =>
+                  setIsMouseOn((prev) => {
+                    return { ...prev, Deep1: false };
+                  })
+                }
+              >
+                <img
+                  src={require(`../src/images/windows-program.png`)}
+                  style={{ width: "16px", margin: "0 5px 0 3px" }}
+                />
+                <span>JavaScript</span>
+                <div className="startDetail-arrow">▶</div>
               </li>
               <li>
                 <img
-                  src={require(`../src/logo.svg`).default}
-                  style={{ width: "25px" }}
+                  src={require(`../src/images/windows-program.png`)}
+                  style={{ width: "16px", margin: "0 5px 0 3px" }}
                 />
-                JavaScript
+                <span>React</span>
+                <div className="startDetail-arrow">▶</div>
               </li>
               <li>
                 <img
-                  src={require(`../src/logo.svg`).default}
-                  style={{ width: "25px" }}
+                  src={require(`../src/images/windows-program.png`)}
+                  style={{ width: "16px", margin: "0 5px 0 3px" }}
                 />
-                React
-              </li>
-              <li>
-                <img
-                  src={require(`../src/logo.svg`).default}
-                  style={{ width: "25px" }}
-                />
-                TypeScript
+                <span>TypeScript</span>
+                <div className="startDetail-arrow">▶</div>
               </li>
             </ul>
           </div>
@@ -74,12 +130,12 @@ function App() {
       const [isMouseOn, setIsMouseOn] = React.useState({
         Detail1: false,
       });
-      console.log(isMouseOn);
+
       return (
         <div
           style={{
             position: "absolute",
-            bottom: "28px",
+            bottom: "34px",
             left: 0,
             width: "250px",
             boxSizing: "border-box",

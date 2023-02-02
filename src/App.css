@@ -57,11 +57,14 @@ li {
   font-family: "Sofia Sans Extra Condensed", sans-serif;
 }
 
-.StartDetails-ul {
+.StartDetails-ul,
+.StartDeepDetail-ul {
   width: 100%;
 }
 
-.StartDetails-ul li {
+.StartDetails-ul li,
+.StartDeepDetail-ul li {
+  position: relative;
   display: flex;
   color: #2c2c2c;
   align-items: center;
@@ -72,4 +75,10 @@ li {
 
 .StartDetails-ul img {
   margin-right: 0;
+}
+
+.startDetail-arrow {
+  margin-left: auto;
+  font-size: 5px;
+  font-family: "Sofia Sans Extra Condensed", sans-serif;
 }
