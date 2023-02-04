@@ -3,281 +3,15 @@ import Window from "./images/windows-4.png";
 import WindowBar from "./images/windows-bar.png";
 import "98.css";
 import "./App.css";
+import StartDetails1 from "./components/StartDetails1";
+import StartDetails2 from "./components/StartDetails2";
 
 function App() {
-  function MainWindow() {
-    function StartDetails1() {
-      const [isMouseOn, setIsMouseOn] = React.useState({
-        Deep1: false,
-        Deep2: false,
-        Deep3: false,
-        Deep4: false,
-      });
-      function StartDeepDetail4() {
-        return (
-          <div
-            style={{
-              position: "absolute",
-              left: "140px",
-              width: "120px",
-              boxSizing: "border-box",
-            }}
-            className="window"
-          >
-            <div
-              className="window-body"
-              style={{
-                padding: "1px 2px",
-                margin: 0,
-                display: "flex",
-                alignItems: "center",
-                fontFamily: "Noto Sans KR",
-                fontWeight: 300,
-              }}
-            >
-              <ul className="StartDeepDetail-ul ">
-                <li id="underCons-li">
-                  <span className="underConstruction">공사 중...</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        );
-      }
-
-      function StartDeepDetail3() {
-        return (
-          <div
-            style={{
-              position: "absolute",
-              left: "140px",
-              width: "160px",
-              boxSizing: "border-box",
-              cursor: "pointer",
-            }}
-            className="window"
-          >
-            <div
-              className="window-body"
-              style={{
-                padding: "1px 2px",
-                margin: 0,
-                display: "flex",
-                alignItems: "center",
-                fontFamily: "Noto Sans KR",
-                fontWeight: 300,
-              }}
-            >
-              <ul className="StartDeepDetail-ul">
-                <li>
-                  <img
-                    src={require(`../src/images/windows-ie.png`)}
-                    style={{ width: "16px", margin: "0 5px 0 3px" }}
-                  />
-                  <span>React portfolio</span>
-                </li>
-                <li>
-                  <img
-                    src={require(`../src/images/windows-ie.png`)}
-                    style={{ width: "16px", margin: "0 5px 0 3px" }}
-                  />
-                  <span>React movieapp</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        );
-      }
-
-      function StartDeepDetail2() {
-        return (
-          <div
-            style={{
-              position: "absolute",
-              left: "140px",
-              width: "200px",
-              boxSizing: "border-box",
-              cursor: "pointer",
-            }}
-            className="window"
-          >
-            <div
-              className="window-body"
-              style={{
-                padding: "1px 2px",
-                margin: 0,
-                display: "flex",
-                alignItems: "center",
-                fontFamily: "Noto Sans KR",
-                fontWeight: 300,
-              }}
-            >
-              <ul className="StartDeepDetail-ul">
-                <li>
-                  <img
-                    src={require(`../src/images/windows-ie.png`)}
-                    style={{ width: "16px", margin: "0 5px 0 3px" }}
-                  />
-                  <span>Momentum clone website</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        );
-      }
-
-      function StartDeepDetail1() {
-        return (
-          <div
-            style={{
-              position: "absolute",
-              left: "140px",
-              width: "180px",
-              boxSizing: "border-box",
-              cursor: "pointer",
-            }}
-            className="window"
-          >
-            <div
-              className="window-body"
-              style={{
-                padding: "1px 2px",
-                margin: 0,
-                display: "flex",
-                alignItems: "center",
-                fontFamily: "Noto Sans KR",
-                fontWeight: 300,
-              }}
-            >
-              <ul className="StartDeepDetail-ul">
-                <li>
-                  <img
-                    src={require(`../src/images/windows-ie.png`)}
-                    style={{ width: "16px", margin: "0 5px 0 3px" }}
-                  />
-                  <span>HTML&CSS Portfolio</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        );
-      }
-      return (
-        <div
-          style={{
-            position: "absolute",
-            top: "-50%",
-            left: "218px",
-            width: "150px",
-            boxSizing: "border-box",
-          }}
-          className="window"
-        >
-          <div
-            className="window-body"
-            style={{
-              padding: "1px 2px",
-              margin: 0,
-              display: "flex",
-              fontFamily: "Noto Sans KR",
-              fontWeight: 300,
-            }}
-          >
-            <ul className="StartDetails-ul">
-              <li
-                onMouseOver={() =>
-                  setIsMouseOn((prev) => {
-                    return { Deep2: false, Deep1: true };
-                  })
-                }
-                onMouseLeave={() =>
-                  setIsMouseOn((prev) => {
-                    return { ...prev, Deep1: false };
-                  })
-                }
-              >
-                {isMouseOn.Deep1 && <StartDeepDetail1 />}
-                <img
-                  src={require(`../src/images/icon-html5.png`)}
-                  style={{ width: "16px", margin: "0 5px 0 3px" }}
-                />
-                <span>HTML & CSS</span>
-                <div className="startDetail-arrow">▶</div>
-              </li>
-              <li
-                onMouseOver={() =>
-                  setIsMouseOn((prev) => {
-                    return { Deep1: false, Deep2: true };
-                  })
-                }
-                onMouseLeave={() =>
-                  setIsMouseOn((prev) => {
-                    return { ...prev, Deep2: false };
-                  })
-                }
-              >
-                {isMouseOn.Deep2 && <StartDeepDetail2 />}
-                <img
-                  src={require(`../src/images/icon-js.png`)}
-                  style={{ width: "16px", margin: "0 5px 0 3px" }}
-                />
-                <span>JavaScript</span>
-                <div className="startDetail-arrow">▶</div>
-              </li>
-              <li
-                onMouseOver={() =>
-                  setIsMouseOn((prev) => {
-                    return { Deep1: false, Deep2: false, Deep3: true };
-                  })
-                }
-                onMouseLeave={() =>
-                  setIsMouseOn((prev) => {
-                    return { ...prev, Deep3: false };
-                  })
-                }
-              >
-                {isMouseOn.Deep3 && <StartDeepDetail3 />}
-                <img
-                  src={require(`../src/logo.svg`).default}
-                  style={{ width: "24px", margin: 0 }}
-                />
-                <span>React</span>
-                <div className="startDetail-arrow">▶</div>
-              </li>
-              <li
-                onMouseOver={() =>
-                  setIsMouseOn((prev) => {
-                    return {
-                      Deep1: false,
-                      Deep2: false,
-                      Deep3: false,
-                      Deep4: true,
-                    };
-                  })
-                }
-                onMouseLeave={() =>
-                  setIsMouseOn((prev) => {
-                    return { ...prev, Deep4: false };
-                  })
-                }
-              >
-                {isMouseOn.Deep4 && <StartDeepDetail4 />}
-                <img
-                  src={require(`../src/images/icon-ts.png`)}
-                  style={{ width: "16px", margin: "0 5px 0 3px" }}
-                />
-                <span>TypeScript</span>
-                <div className="startDetail-arrow">▶</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      );
-    }
-
-    function StartContent() {
+  function MainWindow(props) {
+    function StartContent(props) {
       const [isMouseOn, setIsMouseOn] = React.useState({
         Detail1: false,
+        Detail2: false,
       });
 
       return (
@@ -303,14 +37,26 @@ function App() {
           >
             <img src={WindowBar} />
             <ul className="startContent-ul">
-              <li>
+              <li
+                onMouseOver={() =>
+                  setIsMouseOn({
+                    Detail1: false,
+                  })
+                }
+              >
                 <img
                   src={require(`../src/images/windows-update.png`)}
                   style={{ width: "35px" }}
                 />
                 Windows Update
               </li>
-              <li>
+              <li
+                onMouseOver={() =>
+                  setIsMouseOn({
+                    Detail1: false,
+                  })
+                }
+              >
                 <img
                   src={require(`../src/images/windows-ie.png`)}
                   style={{ width: "35px" }}
@@ -322,7 +68,7 @@ function App() {
                 style={{ position: "relative" }}
                 onMouseOver={() =>
                   setIsMouseOn((prev) => {
-                    return { ...prev, Detail1: true };
+                    return { Detail2: false, Detail1: true };
                   })
                 }
                 // onMouseLeave={() =>
@@ -341,7 +87,15 @@ function App() {
                 <div className="startContent-arrow">▶</div>
                 {isMouseOn.Detail1 && <StartDetails1 />}
               </li>
-              <li style={{ cursor: "pointer" }}>
+              <li
+                style={{ cursor: "pointer" }}
+                onMouseOver={() =>
+                  setIsMouseOn({
+                    Detail1: false,
+                    Detail: false,
+                  })
+                }
+              >
                 <img
                   src={require(`../src/images/windows-docs.png`)}
                   style={{ width: "35px" }}
@@ -349,16 +103,36 @@ function App() {
                 <span>문서(D)</span>
                 {/* <div className="startContent-arrow">▶</div> */}
               </li>
-              <li>
+              <li
+                style={{ position: "relative" }}
+                onMouseOver={() =>
+                  setIsMouseOn({
+                    Detail1: false,
+                    Detail2: true,
+                  })
+                }
+              >
                 <img
                   src={require(`../src/images/windows-setting.png`)}
                   style={{ width: "45px", marginLeft: "-5px" }}
                 />
                 <span style={{ marginLeft: "-6px" }}>설정(S)</span>
                 <div className="startContent-arrow">▶</div>
+                {isMouseOn.Detail2 && (
+                  <StartDetails2
+                    setCrtOn={props.setCrtOn}
+                    crtOn={props.crtOn}
+                  />
+                )}
               </li>
               <hr />
-              <li>
+              <li
+                onMouseOver={() =>
+                  setIsMouseOn({
+                    Detail1: false,
+                  })
+                }
+              >
                 <img
                   src={require(`../src/images/windows-shutdown.png`)}
                   style={{ width: "45px", marginLeft: "-5px" }}
@@ -373,9 +147,9 @@ function App() {
 
     function StartLine(props) {
       // onMouseLeave, Start Contents is closed
-      function onMouseLeave() {
-        props.setOn(false);
-      }
+      // function onMouseLeave() {
+      //   props.setOn(false);
+      // }
       return (
         <div
           style={{
@@ -392,7 +166,9 @@ function App() {
           className="window"
           // onMouseLeave={onMouseLeave}
         >
-          {props.on && <StartContent />}
+          {props.on && (
+            <StartContent setCrtOn={props.setCrtOn} crtOn={props.crtOn} />
+          )}
           <div
             className="window-body"
             style={{
@@ -439,26 +215,25 @@ function App() {
         </div>
       );
     }
-    function FirstAlert() {
-      return (
-        <div style={{ width: 300 }} className="window">
-          <div className="title-bar">
-            <div className="title-bar-text">A wild alert!</div>
-          </div>
+    // function FirstAlert() {
+    //   return (
+    //     <div style={{ width: 300 }} className="window">
+    //       <div className="title-bar">
+    //         <div className="title-bar-text">A wild alert!</div>
+    //       </div>
 
-          <div className="window-body">
-            <p style={{ textAlign: "center" }}>입장하시겠습니까?</p>
-            <div className="field-row" style={{ justifyContent: "center" }}>
-              <button>Yes</button>
-              <button>네</button>
-              <button disabled>아니오</button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    // Start Contents is on / off
-    const [on, setOn] = React.useState(false);
+    //       <div className="window-body">
+    //         <p style={{ textAlign: "center" }}>입장하시겠습니까?</p>
+    //         <div className="field-row" style={{ justifyContent: "center" }}>
+    //           <button>Yes</button>
+    //           <button>네</button>
+    //           <button disabled>아니오</button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   );
+    // }
+
     return (
       // <div
       //   style={{
@@ -488,14 +263,20 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
           }}
-          onClick={() => setOn(false)}
         ></div>
         {/* <FirstAlert /> */}
-        <StartLine on={on} setOn={setOn} />
+        <StartLine
+          on={props.on}
+          setOn={props.setOn}
+          setCrtOn={props.setCrtOn}
+          crtOn={props.crtOn}
+        />
       </>
     );
   }
-
+  // Start Contents is on / off, when background clicked it is off
+  const [on, setOn] = React.useState(false);
+  const [crtOn, setCrtOn] = React.useState(true);
   return (
     <div
       className="App"
@@ -511,7 +292,19 @@ function App() {
         alignItems: "center",
       }}
     >
-      <MainWindow />
+      <div
+        className={`crt ${crtOn ? "null" : "none"}`}
+        style={{
+          height: "100vh",
+          width: "100vw",
+          // zIndex: "20",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+        onClick={() => setOn(false)}
+      />
+      <MainWindow on={on} setOn={setOn} setCrtOn={setCrtOn} crtOn={crtOn} />
     </div>
   );
 }
