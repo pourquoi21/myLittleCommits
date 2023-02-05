@@ -1,13 +1,6 @@
 import React from "react";
 
 function StartDetails2(props) {
-  const [isMouseOn, setIsMouseOn] = React.useState({
-    Deep1: false,
-    Deep2: false,
-    Deep3: false,
-    Deep4: false,
-  });
-
   // console.log(props.crtOn);
 
   // function StartDeepDetail2() {
@@ -104,20 +97,8 @@ function StartDetails2(props) {
           fontWeight: 300,
         }}
       >
-        <ul
-          className="StartDetails-ul"
-          onMouseOver={() =>
-            setIsMouseOn((prev) => {
-              return { Deep2: false, Deep1: true };
-            })
-          }
-          onMouseLeave={() =>
-            setIsMouseOn((prev) => {
-              return { ...prev, Deep1: false };
-            })
-          }
-        >
-          <li>
+        <ul className="StartDetails-ul" onClick={() => props.setOn(false)}>
+          <li onClick={() => props.setOpenSetting(true)}>
             {/* {isMouseOn.Deep1 && <StartDeepDetail1 />} */}
             <img
               src={require(`../../src/images/windows-wall.png`)}

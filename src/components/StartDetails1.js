@@ -1,13 +1,13 @@
 import React from "react";
 
-function StartDetails1() {
+function StartDetails1(props) {
   const [isMouseOn, setIsMouseOn] = React.useState({
     Deep1: false,
     Deep2: false,
     Deep3: false,
     Deep4: false,
   });
-  function StartDeepDetail4() {
+  function StartDeepDetail4(props) {
     return (
       <div
         style={{
@@ -29,7 +29,7 @@ function StartDetails1() {
             fontWeight: 300,
           }}
         >
-          <ul className="StartDeepDetail-ul ">
+          <ul className="StartDeepDetail-ul">
             <li id="underCons-li">
               <span className="underConstruction">공사 중...</span>
             </li>
@@ -39,7 +39,7 @@ function StartDetails1() {
     );
   }
 
-  function StartDeepDetail3() {
+  function StartDeepDetail3(props) {
     return (
       <div
         style={{
@@ -83,7 +83,7 @@ function StartDetails1() {
     );
   }
 
-  function StartDeepDetail2() {
+  function StartDeepDetail2(props) {
     return (
       <div
         style={{
@@ -120,7 +120,7 @@ function StartDetails1() {
     );
   }
 
-  function StartDeepDetail1() {
+  function StartDeepDetail1(props) {
     return (
       <div
         style={{
@@ -143,7 +143,7 @@ function StartDetails1() {
             fontWeight: 300,
           }}
         >
-          <ul className="StartDeepDetail-ul">
+          <ul className="StartDeepDetail-ul" onClick={() => props.setOn(false)}>
             <li>
               <img
                 src={require(`../../src/images/windows-ie.png`)}
@@ -190,13 +190,13 @@ function StartDetails1() {
               })
             }
           >
-            {isMouseOn.Deep1 && <StartDeepDetail1 />}
             <img
               src={require(`../../src/images/icon-html5.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
             <span>HTML & CSS</span>
             <div className="startDetail-arrow">▶</div>
+            {isMouseOn.Deep1 && <StartDeepDetail1 setOn={props.setOn} />}
           </li>
           <li
             onMouseOver={() =>
@@ -210,7 +210,7 @@ function StartDetails1() {
               })
             }
           >
-            {isMouseOn.Deep2 && <StartDeepDetail2 />}
+            {isMouseOn.Deep2 && <StartDeepDetail2 setOn={props.setOn} />}
             <img
               src={require(`../../src/images/icon-js.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
@@ -230,7 +230,7 @@ function StartDetails1() {
               })
             }
           >
-            {isMouseOn.Deep3 && <StartDeepDetail3 />}
+            {isMouseOn.Deep3 && <StartDeepDetail3 setOn={props.setOn} />}
             <img
               src={require(`../../src/logo.svg`).default}
               style={{ width: "24px", margin: 0 }}
@@ -255,7 +255,7 @@ function StartDetails1() {
               })
             }
           >
-            {isMouseOn.Deep4 && <StartDeepDetail4 />}
+            {isMouseOn.Deep4 && <StartDeepDetail4 setOn={props.setOn} />}
             <img
               src={require(`../../src/images/icon-ts.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}

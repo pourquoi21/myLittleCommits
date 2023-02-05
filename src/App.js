@@ -71,7 +71,7 @@ function App() {
                     return { Detail2: false, Detail1: true };
                   })
                 }
-                // onMouseLeave={() =>
+                // onMouseLeave={() =>데
                 //   setIsMouseOn((prev) => {
                 //     return { ...prev, Detail1: false };
                 //   })
@@ -85,7 +85,7 @@ function App() {
                 />
                 <span>프로그램(P)</span>
                 <div className="startContent-arrow">▶</div>
-                {isMouseOn.Detail1 && <StartDetails1 />}
+                {isMouseOn.Detail1 && <StartDetails1 setOn={props.setOn} />}
               </li>
               <li
                 style={{ cursor: "pointer" }}
@@ -122,6 +122,8 @@ function App() {
                   <StartDetails2
                     setCrtOn={props.setCrtOn}
                     crtOn={props.crtOn}
+                    setOn={props.setOn}
+                    setOpenSetting={props.setOpenSetting}
                   />
                 )}
               </li>
@@ -167,7 +169,12 @@ function App() {
           // onMouseLeave={onMouseLeave}
         >
           {props.on && (
-            <StartContent setCrtOn={props.setCrtOn} crtOn={props.crtOn} />
+            <StartContent
+              setCrtOn={props.setCrtOn}
+              crtOn={props.crtOn}
+              setOn={props.setOn}
+              setOpenSetting={props.setOpenSetting}
+            />
           )}
           <div
             className="window-body"
@@ -270,13 +277,74 @@ function App() {
           setOn={props.setOn}
           setCrtOn={props.setCrtOn}
           crtOn={props.crtOn}
+          setOpenSetting={props.setOpenSetting}
         />
       </>
+    );
+  }
+
+  function WallpaperSetting(props) {
+    return (
+      <div
+        className="window"
+        style={{
+          position: "absolute",
+          margin: "0 auto",
+          width: "400px",
+          height: "450px",
+        }}
+      >
+        <div className="title-bar">
+          <div className="title-bar-text">바탕화면 설정</div>
+          <div className="title-bar-controls">
+            <button aria-label="Help"></button>
+            <button
+              aria-label="Close"
+              onClick={() => props.setOpenSetting((prev) => !prev)}
+            ></button>
+          </div>
+        </div>
+        <div className="window-body">
+          <div
+            className="wallpaper_monitor"
+            style={{
+              margin: "30px auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "180px",
+              height: "140px",
+              background: "#ccc",
+              borderRight: "2px solid #999",
+              borderBottom: "2px solid #999",
+              borderLeft: "2px solid #fff",
+              borderTop: "2px solid #fff",
+            }}
+          >
+            <div
+              className="wallpaper_ex"
+              style={{
+                width: "155px",
+                height: "115px",
+                background: "#008080",
+                borderRight: "2px solid #fff",
+                borderBottom: "2px solid #fff",
+                borderLeft: "2px solid #999",
+                borderTop: "2px solid #999",
+              }}
+            />
+          </div>
+
+          <span>Hello</span>
+        </div>
+      </div>
     );
   }
   // Start Contents is on / off, when background clicked it is off
   const [on, setOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
+  const [openSetting, setOpenSetting] = React.useState(false);
+  console.log(on);
   return (
     <div
       className="App"
@@ -304,7 +372,14 @@ function App() {
         }}
         onClick={() => setOn(false)}
       />
-      <MainWindow on={on} setOn={setOn} setCrtOn={setCrtOn} crtOn={crtOn} />
+      {openSetting && <WallpaperSetting setOpenSetting={setOpenSetting} />}
+      <MainWindow
+        on={on}
+        setOn={setOn}
+        setCrtOn={setCrtOn}
+        crtOn={crtOn}
+        setOpenSetting={setOpenSetting}
+      />
     </div>
   );
 }
