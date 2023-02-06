@@ -5,6 +5,7 @@ import "98.css";
 import "./App.css";
 import StartDetails1 from "./components/StartDetails1";
 import StartDetails2 from "./components/StartDetails2";
+import StartDeepDetail3 from "./components/StartDeepDetail3";
 
 function App() {
   function MainWindow(props) {
@@ -340,7 +341,7 @@ function App() {
       </div>
     );
   }
-  // Start Contents is on / off, when background clicked it is off
+  // Start Contents is on / off, when background is clicked it goes off
   const [on, setOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
   const [openSetting, setOpenSetting] = React.useState(false);
