@@ -5,7 +5,11 @@ import "98.css";
 import "./App.css";
 import StartDetails1 from "./components/StartDetails1";
 import StartDetails2 from "./components/StartDetails2";
-import StartDeepDetail3 from "./components/StartDeepDetail3";
+import WallpaperSetting from "./components/WallpaperSetting";
+import wallpaper1 from "./images/wallpaper1.jpg";
+import wallpaper2 from "./images/wallpaper2.jpg";
+import wallpaper3 from "./images/wallpaper3.jpg";
+import wallpaper4 from "./images/wallpaper4.jpg";
 
 function App() {
   function MainWindow(props) {
@@ -266,6 +270,8 @@ function App() {
             width: "100%",
             // boxSizing: "border-box",
             backgroundColor: "#008080",
+            backgroundImage: `URL(${props.changeWall})`,
+            backgroundSize: "cover",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -284,68 +290,174 @@ function App() {
     );
   }
 
-  function WallpaperSetting(props) {
-    return (
-      <div
-        className="window"
-        style={{
-          position: "absolute",
-          margin: "0 auto",
-          width: "400px",
-          height: "450px",
-        }}
-      >
-        <div className="title-bar">
-          <div className="title-bar-text">바탕화면 설정</div>
-          <div className="title-bar-controls">
-            <button aria-label="Help"></button>
-            <button
-              aria-label="Close"
-              onClick={() => props.setOpenSetting((prev) => !prev)}
-            ></button>
-          </div>
-        </div>
-        <div className="window-body">
-          <div
-            className="wallpaper_monitor"
-            style={{
-              margin: "30px auto",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "180px",
-              height: "140px",
-              background: "#ccc",
-              borderRight: "2px solid #999",
-              borderBottom: "2px solid #999",
-              borderLeft: "2px solid #fff",
-              borderTop: "2px solid #fff",
-            }}
-          >
-            <div
-              className="wallpaper_ex"
-              style={{
-                width: "155px",
-                height: "115px",
-                background: "#008080",
-                borderRight: "2px solid #fff",
-                borderBottom: "2px solid #fff",
-                borderLeft: "2px solid #999",
-                borderTop: "2px solid #999",
-              }}
-            />
-          </div>
-
-          <span>Hello</span>
-        </div>
-      </div>
-    );
-  }
+  // function WallpaperSetting(props) {
+  //   return (
+  //     <div
+  //       className="window"
+  //       style={{
+  //         position: "absolute",
+  //         margin: "0 auto",
+  //         width: "400px",
+  //         height: "420px",
+  //       }}
+  //     >
+  //       <div className="title-bar">
+  //         <div className="title-bar-text">바탕화면 설정</div>
+  //         <div className="title-bar-controls">
+  //           <button aria-label="Help" />
+  //           <button
+  //             aria-label="Close"
+  //             onClick={() => props.setOpenSetting(false)}
+  //           />
+  //         </div>
+  //       </div>
+  //       <div className="window-body">
+  //         <div
+  //           className="wallpaper_monitor"
+  //           style={{
+  //             margin: "30px auto",
+  //             display: "flex",
+  //             alignItems: "center",
+  //             justifyContent: "center",
+  //             width: "180px",
+  //             height: "115px",
+  //             background: "#ccc",
+  //             borderRight: "2px solid #999",
+  //             borderBottom: "2px solid #999",
+  //             borderLeft: "2px solid #fff",
+  //             borderTop: "2px solid #fff",
+  //           }}
+  //         >
+  //           <div
+  //             className="wallpaper_ex"
+  //             style={{
+  //               width: "155px",
+  //               height: "90px",
+  //               background: "#008080",
+  //               backgroundImage: `URL(${props.backgroundImage})`,
+  //               backgroundSize: "155px",
+  //               borderRight: "2px solid #fff",
+  //               borderBottom: "2px solid #fff",
+  //               borderLeft: "2px solid #999",
+  //               borderTop: "2px solid #999",
+  //             }}
+  //           />
+  //         </div>
+  //         <fieldset
+  //           style={{
+  //             margin: "10px 30px",
+  //           }}
+  //         >
+  //           <legend>바탕화면 설정</legend>
+  //           <ul className="tree-view wallpaper_ul">
+  //             <li
+  //               className={props.wallpaper.wall1 ? "wallpaper_selected" : ""}
+  //               onClick={() =>
+  //                 props.setWallpaper({
+  //                   wall1: true,
+  //                   wall2: false,
+  //                   wall3: false,
+  //                   wall4: false,
+  //                   wall5: false,
+  //                 })
+  //               }
+  //             >
+  //               윈도우 98
+  //             </li>
+  //             <li
+  //               className={props.wallpaper.wall2 ? "wallpaper_selected" : ""}
+  //               onClick={() =>
+  //                 props.setWallpaper({
+  //                   wall2: true,
+  //                   wall1: false,
+  //                   wall3: false,
+  //                   wall4: false,
+  //                   wall5: false,
+  //                 })
+  //               }
+  //             >
+  //               윈도우 98(Blue Theme)
+  //             </li>
+  //             <li
+  //               className={props.wallpaper.wall3 ? "wallpaper_selected" : ""}
+  //               onClick={() =>
+  //                 props.setWallpaper({
+  //                   wall3: true,
+  //                   wall1: false,
+  //                   wall2: false,
+  //                   wall4: false,
+  //                   wall5: false,
+  //                 })
+  //               }
+  //             >
+  //               숲
+  //             </li>
+  //             <li
+  //               className={props.wallpaper.wall4 ? "wallpaper_selected" : ""}
+  //               onClick={() =>
+  //                 props.setWallpaper({
+  //                   wall4: true,
+  //                   wall1: false,
+  //                   wall2: false,
+  //                   wall3: false,
+  //                   wall5: false,
+  //                 })
+  //               }
+  //             >
+  //               구름
+  //             </li>
+  //             <li
+  //               className={props.wallpaper.wall5 ? "wallpaper_selected" : ""}
+  //               onClick={() =>
+  //                 props.setWallpaper({
+  //                   wall5: true,
+  //                   wall1: false,
+  //                   wall2: false,
+  //                   wall3: false,
+  //                   wall4: false,
+  //                 })
+  //               }
+  //             >
+  //               기본
+  //             </li>
+  //           </ul>
+  //         </fieldset>
+  //         <div
+  //           style={{
+  //             margin: "20px 30px",
+  //             display: "grid",
+  //             gridTemplate: "30px 30px / 1fr 1fr",
+  //             gridGap: "10px",
+  //           }}
+  //         >
+  //           <button onClick={() => console.log(props.backgroundImage)}>
+  //             확인
+  //           </button>
+  //           <button>적용</button>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   // Start Contents is on / off, when background is clicked it goes off
   const [on, setOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
   const [openSetting, setOpenSetting] = React.useState(false);
-  console.log(on);
+  const [wallpaper, setWallpaper] = React.useState({
+    wall1: true,
+    wall2: false,
+    wall3: false,
+    wall4: false,
+    wall5: false,
+  });
+  const [changeWall, setChangeWall] = React.useState("");
+  let sampleImage;
+  if (wallpaper.wall1) sampleImage = wallpaper1;
+  else if (wallpaper.wall2) sampleImage = wallpaper2;
+  else if (wallpaper.wall3) sampleImage = wallpaper3;
+  else if (wallpaper.wall4) sampleImage = wallpaper4;
+  else sampleImage = null;
+
   return (
     <div
       className="App"
@@ -373,13 +485,22 @@ function App() {
         }}
         onClick={() => setOn(false)}
       />
-      {openSetting && <WallpaperSetting setOpenSetting={setOpenSetting} />}
+      {openSetting && (
+        <WallpaperSetting
+          setOpenSetting={setOpenSetting}
+          wallpaper={wallpaper}
+          setWallpaper={setWallpaper}
+          sampleImage={sampleImage}
+          setChangeWall={setChangeWall}
+        />
+      )}
       <MainWindow
         on={on}
         setOn={setOn}
         setCrtOn={setCrtOn}
         crtOn={crtOn}
         setOpenSetting={setOpenSetting}
+        changeWall={changeWall}
       />
     </div>
   );

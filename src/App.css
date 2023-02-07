@@ -301,3 +301,8 @@ li {
   text-shadow: 1px 1px #fff;
   font-weight: 500;
 }
+
+.wallpaper_ul .wallpaper_selected {
+  background: darkblue;
+  color: #fff;
+}
