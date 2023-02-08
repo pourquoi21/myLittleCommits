@@ -61,9 +61,9 @@ export default function WallpaperSetting(props) {
           <legend>바탕화면 설정</legend>
           <ul className="tree-view wallpaper_ul">
             <li
-              className={props.wallpaper.wall1 ? "wallpaper_selected" : ""}
+              className={props.wallpaperList.wall1 ? "wallpaper_selected" : ""}
               onClick={() =>
-                props.setWallpaper({
+                props.setWallpaperList({
                   wall1: true,
                   wall2: false,
                   wall3: false,
@@ -72,12 +72,16 @@ export default function WallpaperSetting(props) {
                 })
               }
             >
+              <img
+                src={require(`../images/windows-paint.png`)}
+                style={{ width: "14px", marginBottom: "-2px" }}
+              />{" "}
               윈도우 98
             </li>
             <li
-              className={props.wallpaper.wall2 ? "wallpaper_selected" : ""}
+              className={props.wallpaperList.wall2 ? "wallpaper_selected" : ""}
               onClick={() =>
-                props.setWallpaper({
+                props.setWallpaperList({
                   wall2: true,
                   wall1: false,
                   wall3: false,
@@ -86,12 +90,16 @@ export default function WallpaperSetting(props) {
                 })
               }
             >
+              <img
+                src={require(`../images/windows-paint.png`)}
+                style={{ width: "14px", marginBottom: "-2px" }}
+              />{" "}
               윈도우 98(Blue Theme)
             </li>
             <li
-              className={props.wallpaper.wall3 ? "wallpaper_selected" : ""}
+              className={props.wallpaperList.wall3 ? "wallpaper_selected" : ""}
               onClick={() =>
-                props.setWallpaper({
+                props.setWallpaperList({
                   wall3: true,
                   wall1: false,
                   wall2: false,
@@ -100,12 +108,16 @@ export default function WallpaperSetting(props) {
                 })
               }
             >
+              <img
+                src={require(`../images/windows-paint.png`)}
+                style={{ width: "14px", marginBottom: "-2px" }}
+              />{" "}
               숲
             </li>
             <li
-              className={props.wallpaper.wall4 ? "wallpaper_selected" : ""}
+              className={props.wallpaperList.wall4 ? "wallpaper_selected" : ""}
               onClick={() =>
-                props.setWallpaper({
+                props.setWallpaperList({
                   wall4: true,
                   wall1: false,
                   wall2: false,
@@ -114,12 +126,16 @@ export default function WallpaperSetting(props) {
                 })
               }
             >
+              <img
+                src={require(`../images/windows-paint.png`)}
+                style={{ width: "14px", marginBottom: "-2px" }}
+              />{" "}
               구름
             </li>
             <li
-              className={props.wallpaper.wall5 ? "wallpaper_selected" : ""}
+              className={props.wallpaperList.wall5 ? "wallpaper_selected" : ""}
               onClick={() =>
-                props.setWallpaper({
+                props.setWallpaperList({
                   wall5: true,
                   wall1: false,
                   wall2: false,
@@ -128,6 +144,10 @@ export default function WallpaperSetting(props) {
                 })
               }
             >
+              <img
+                src={require(`../images/windows-paint.png`)}
+                style={{ width: "14px", marginBottom: "-2px" }}
+              />{" "}
               기본
             </li>
           </ul>
@@ -135,12 +155,12 @@ export default function WallpaperSetting(props) {
         <div
           style={{
             margin: "20px 30px",
-            display: "grid",
-            gridTemplate: "30px 30px / 1fr 1fr",
-            gridGap: "10px",
+            display: "flex",
+            justifyContent: "flex-end",
           }}
         >
           <button
+            style={{ width: "100px", height: "30px", marginRight: "10px" }}
             onClick={() => {
               props.setChangeWall(props.sampleImage);
               props.setOpenSetting(false);
@@ -149,6 +169,7 @@ export default function WallpaperSetting(props) {
             확인
           </button>
           <button
+            style={{ width: "100px", height: "30px" }}
             onClick={() => {
               props.setChangeWall(props.sampleImage);
             }}

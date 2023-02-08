@@ -282,8 +282,8 @@ function App() {
         <StartLine
           on={props.on}
           setOn={props.setOn}
-          setCrtOn={props.setCrtOn}
           crtOn={props.crtOn}
+          setCrtOn={props.setCrtOn}
           setOpenSetting={props.setOpenSetting}
         />
       </>
@@ -443,7 +443,7 @@ function App() {
   const [on, setOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
   const [openSetting, setOpenSetting] = React.useState(false);
-  const [wallpaper, setWallpaper] = React.useState({
+  const [wallpaperList, setWallpaperList] = React.useState({
     wall1: true,
     wall2: false,
     wall3: false,
@@ -452,10 +452,10 @@ function App() {
   });
   const [changeWall, setChangeWall] = React.useState("");
   let sampleImage;
-  if (wallpaper.wall1) sampleImage = wallpaper1;
-  else if (wallpaper.wall2) sampleImage = wallpaper2;
-  else if (wallpaper.wall3) sampleImage = wallpaper3;
-  else if (wallpaper.wall4) sampleImage = wallpaper4;
+  if (wallpaperList.wall1) sampleImage = wallpaper1;
+  else if (wallpaperList.wall2) sampleImage = wallpaper2;
+  else if (wallpaperList.wall3) sampleImage = wallpaper3;
+  else if (wallpaperList.wall4) sampleImage = wallpaper4;
   else sampleImage = null;
 
   return (
@@ -488,8 +488,8 @@ function App() {
       {openSetting && (
         <WallpaperSetting
           setOpenSetting={setOpenSetting}
-          wallpaper={wallpaper}
-          setWallpaper={setWallpaper}
+          wallpaperList={wallpaperList}
+          setWallpaperList={setWallpaperList}
           sampleImage={sampleImage}
           setChangeWall={setChangeWall}
         />
@@ -497,8 +497,8 @@ function App() {
       <MainWindow
         on={on}
         setOn={setOn}
-        setCrtOn={setCrtOn}
         crtOn={crtOn}
+        setCrtOn={setCrtOn}
         setOpenSetting={setOpenSetting}
         changeWall={changeWall}
       />
