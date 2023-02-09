@@ -164,6 +164,14 @@ export default function WallpaperSetting(props) {
             onClick={() => {
               props.setChangeWall(props.sampleImage);
               props.setOpenSetting(false);
+              props.setOpenProgramsList((prev) => {
+                let newList = [];
+                for (let i = 0; i < prev.length; i++) {
+                  if (prev[i] === "바탕화면 설정") newList.push();
+                  else newList.push(prev[i]);
+                }
+                return newList;
+              });
             }}
           >
             확인
