@@ -17,7 +17,17 @@ export default function WallpaperSetting(props) {
           <button aria-label="Help" />
           <button
             aria-label="Close"
-            onClick={() => props.setOpenSetting(false)}
+            onClick={() => {
+              props.setOpenSetting(false);
+              props.setOpenProgramsList((prev) => {
+                let newList = [];
+                for (let i = 0; i < prev.length; i++) {
+                  if (prev[i] === "바탕화면 설정") newList.push();
+                  else newList.push(prev[i]);
+                }
+                return newList;
+              });
+            }}
           />
         </div>
       </div>
