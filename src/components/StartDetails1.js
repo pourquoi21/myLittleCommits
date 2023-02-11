@@ -42,126 +42,6 @@ function StartDetails1(props) {
     );
   }
 
-  // function StartDeepDetail3(props) {
-  //   return (
-  //     <div
-  //       style={{
-  //         position: "absolute",
-  //         left: "140px",
-  //         width: "160px",
-  //         boxSizing: "border-box",
-  //         cursor: "pointer",
-  //       }}
-  //       className="window"
-  //     >
-  //       <div
-  //         className="window-body"
-  //         style={{
-  //           padding: "1px 2px",
-  //           margin: 0,
-  //           display: "flex",
-  //           alignItems: "center",
-  //           fontFamily: "Noto Sans KR",
-  //           fontWeight: 300,
-  //         }}
-  //       >
-  //         <ul className="StartDeepDetail-ul" onClick={() => props.setOn(false)}>
-  //           <li>
-  //             <img
-  //               src={require(`../../src/images/windows-ie.png`)}
-  //               style={{ width: "16px", margin: "0 5px 0 3px" }}
-  //             />
-  //             <span>React portfolio</span>
-  //           </li>
-  //           <li>
-  //             <img
-  //               src={require(`../../src/images/windows-ie.png`)}
-  //               style={{ width: "16px", margin: "0 5px 0 3px" }}
-  //             />
-  //             <span>React movieapp</span>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // function StartDeepDetail2(props) {
-  //   return (
-  //     <div
-  //       style={{
-  //         position: "absolute",
-  //         left: "140px",
-  //         width: "200px",
-  //         boxSizing: "border-box",
-  //         cursor: "pointer",
-  //       }}
-  //       className="window"
-  //     >
-  //       <div
-  //         className="window-body"
-  //         style={{
-  //           padding: "1px 2px",
-  //           margin: 0,
-  //           display: "flex",
-  //           alignItems: "center",
-  //           fontFamily: "Noto Sans KR",
-  //           fontWeight: 300,
-  //         }}
-  //       >
-  //         <ul className="StartDeepDetail-ul" onClick={() => props.setOn(false)}>
-  //           <li>
-  //             <img
-  //               src={require(`../../src/images/windows-ie.png`)}
-  //               style={{ width: "16px", margin: "0 5px 0 3px" }}
-  //             />
-  //             <span>Momentum clone website</span>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // function StartDeepDetail1(props) {
-  //   return (
-  //     <div
-  //       style={{
-  //         position: "absolute",
-  //         left: "140px",
-  //         width: "180px",
-  //         boxSizing: "border-box",
-  //         cursor: "pointer",
-  //       }}
-  //       className="window"
-  //     >
-  //       <div
-  //         className="window-body"
-  //         style={{
-  //           padding: "1px 2px",
-  //           margin: 0,
-  //           display: "flex",
-  //           alignItems: "center",
-  //           fontFamily: "Noto Sans KR",
-  //           fontWeight: 300,
-  //         }}
-  //       >
-  //         <ul
-  //           className="StartDeepDetail-ul"
-  //           onClick={() => console.log("clicked")}
-  //         >
-  //           <li>
-  //             <img
-  //               src={require(`../../src/images/windows-ie.png`)}
-  //               style={{ width: "16px", margin: "0 5px 0 3px" }}
-  //             />
-  //             <span>HTML&CSS Portfolio</span>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   );
-  // }
   return (
     <div
       style={{
@@ -202,7 +82,9 @@ function StartDetails1(props) {
             />
             <span>HTML & CSS</span>
             <div className="startDetail-arrow">▶</div>
-            {isMouseOn.Deep1 && <StartDeepDetail1 setOn={props.setOn} />}
+            {isMouseOn.Deep1 && (
+              <StartDeepDetail1 setStartMenuOn={props.setStartMenuOn} />
+            )}
           </li>
           <li
             onMouseOver={() =>
@@ -222,7 +104,9 @@ function StartDetails1(props) {
             />
             <span>JavaScript</span>
             <div className="startDetail-arrow">▶</div>
-            {isMouseOn.Deep2 && <StartDeepDetail2 setOn={props.setOn} />}
+            {isMouseOn.Deep2 && (
+              <StartDeepDetail2 setStartMenuOn={props.setStartMenuOn} />
+            )}
           </li>
           <li
             onMouseOver={() =>
@@ -242,7 +126,9 @@ function StartDetails1(props) {
             />
             <span>React</span>
             <div className="startDetail-arrow">▶</div>
-            {isMouseOn.Deep3 && <StartDeepDetail3 setOn={props.setOn} />}
+            {isMouseOn.Deep3 && (
+              <StartDeepDetail3 setStartMenuOn={props.setStartMenuOn} />
+            )}
           </li>
           <li
             onMouseOver={() =>

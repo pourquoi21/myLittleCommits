@@ -3,10 +3,11 @@ import Window from "../images/windows-4.png";
 import WindowBar from "../images/windows-bar.png";
 import StartDetails1 from "./StartDetails1";
 import StartDetails2 from "./StartDetails2";
+import DocumentMenu from "./DocumentMenu";
 
 function MainWindow(props) {
   function StartContent(props) {
-    const [isMouseOn, setIsMouseOn] = React.useState({
+    const [isSubOn, setIsSubOn] = React.useState({
       Detail1: false,
       Detail2: false,
     });
@@ -36,7 +37,7 @@ function MainWindow(props) {
           <ul className="startContent-ul">
             <li
               onMouseOver={() =>
-                setIsMouseOn({
+                setIsSubOn({
                   Detail1: false,
                 })
               }
@@ -49,7 +50,7 @@ function MainWindow(props) {
             </li>
             <li
               onMouseOver={() =>
-                setIsMouseOn({
+                setIsSubOn({
                   Detail1: false,
                 })
               }
@@ -64,7 +65,7 @@ function MainWindow(props) {
             <li
               style={{ position: "relative" }}
               onMouseOver={() =>
-                setIsMouseOn((prev) => {
+                setIsSubOn((prev) => {
                   return { Detail2: false, Detail1: true };
                 })
               }
@@ -77,12 +78,14 @@ function MainWindow(props) {
               />
               <span>프로그램(P)</span>
               <div className="startContent-arrow">▶</div>
-              {isMouseOn.Detail1 && <StartDetails1 setOn={props.setOn} />}
+              {isSubOn.Detail1 && (
+                <StartDetails1 setStartMenuOn={props.setStartMenuOn} />
+              )}
             </li>
             <li
               style={{ cursor: "pointer" }}
               onMouseOver={() =>
-                setIsMouseOn({
+                setIsSubOn({
                   Detail1: false,
                   Detail2: false,
                 })
@@ -98,7 +101,7 @@ function MainWindow(props) {
             <li
               style={{ position: "relative" }}
               onMouseOver={() =>
-                setIsMouseOn({
+                setIsSubOn({
                   Detail1: false,
                   Detail2: true,
                 })
@@ -110,12 +113,12 @@ function MainWindow(props) {
               />
               <span style={{ marginLeft: "-6px" }}>설정(S)</span>
               <div className="startContent-arrow">▶</div>
-              {isMouseOn.Detail2 && (
+              {isSubOn.Detail2 && (
                 <StartDetails2
                   setCrtOn={props.setCrtOn}
                   crtOn={props.crtOn}
-                  setOn={props.setOn}
-                  setOpenSetting={props.setOpenSetting}
+                  setStartMenuOn={props.setStartMenuOn}
+                  setOpenSubWindow={props.setOpenSubWindow}
                   setOpenProgramsList={props.setOpenProgramsList}
                 />
               )}
@@ -123,8 +126,9 @@ function MainWindow(props) {
             <hr />
             <li
               onMouseOver={() =>
-                setIsMouseOn({
+                setIsSubOn({
                   Detail1: false,
+                  Document: false,
                 })
               }
             >
@@ -162,12 +166,12 @@ function MainWindow(props) {
         className="window"
         // onMouseLeave={onMouseLeave}
       >
-        {props.on && (
+        {props.startMenuOn && (
           <StartContent
             setCrtOn={props.setCrtOn}
             crtOn={props.crtOn}
-            setOn={props.setOn}
-            setOpenSetting={props.setOpenSetting}
+            setStartMenuOn={props.setStartMenuOn}
+            setOpenSubWindow={props.setOpenSubWindow}
             setOpenProgramsList={props.setOpenProgramsList}
           />
         )}
@@ -202,7 +206,7 @@ function MainWindow(props) {
                 letterSpacing: "0.5px",
                 fontFamily: "Noto Sans KR",
               }}
-              onClick={() => props.setOn((prev) => !prev)}
+              onClick={() => props.setStartMenuOn((prev) => !prev)}
             >
               시작
             </div>
@@ -357,11 +361,11 @@ function MainWindow(props) {
       </div>
       {/* <FirstAlert /> */}
       <StartLine
-        on={props.on}
-        setOn={props.setOn}
+        startMenuOn={props.startMenuOn}
+        setStartMenuOn={props.setStartMenuOn}
         crtOn={props.crtOn}
         setCrtOn={props.setCrtOn}
-        setOpenSetting={props.setOpenSetting}
+        setOpenSubWindow={props.setOpenSubWindow}
         openProgramsList={props.openProgramsList}
         setOpenProgramsList={props.setOpenProgramsList}
       />

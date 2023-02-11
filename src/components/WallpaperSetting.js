@@ -18,7 +18,10 @@ export default function WallpaperSetting(props) {
           <button
             aria-label="Close"
             onClick={() => {
-              props.setOpenSetting(false);
+              props.setOpenSubWindow((prev) => ({
+                ...prev,
+                wallpaperSetting: false,
+              }));
               props.setOpenProgramsList((prev) => {
                 let newList = [];
                 for (let i = 0; i < prev.length; i++) {
@@ -173,7 +176,10 @@ export default function WallpaperSetting(props) {
             style={{ width: "100px", height: "30px", marginRight: "10px" }}
             onClick={() => {
               props.setChangeWall(props.sampleImage);
-              props.setOpenSetting(false);
+              props.setOpenSubWindow((prev) => ({
+                ...prev,
+                wallpaperSetting: false,
+              }));
               props.setOpenProgramsList((prev) => {
                 let newList = [];
                 for (let i = 0; i < prev.length; i++) {

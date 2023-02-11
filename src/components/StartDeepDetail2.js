@@ -23,7 +23,10 @@ export default function StartDeepDetail2(props) {
           fontWeight: 300,
         }}
       >
-        <ul className="StartDeepDetail-ul" onClick={() => props.setOn(false)}>
+        <ul
+          className="StartDeepDetail-ul"
+          onClick={() => props.setStartMenuOn(false)}
+        >
           <li>
             <img
               src={require(`../../src/images/windows-ie.png`)}

@@ -13,9 +13,12 @@ import wallpaper4 from "./images/wallpaper4.jpg";
 
 function App() {
   // Start Contents is on / off, when background is clicked it goes off
-  const [on, setOn] = React.useState(false);
+  const [startMenuOn, setStartMenuOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
-  const [openSetting, setOpenSetting] = React.useState(false);
+  const [openSubWindow, setOpenSubWindow] = React.useState({
+    wallpaperSetting: false,
+    document: false,
+  });
   const [wallpaperList, setWallpaperList] = React.useState({
     wall1: true,
     wall2: false,
@@ -59,11 +62,11 @@ function App() {
           top: 0,
           left: 0,
         }}
-        onClick={() => setOn(false)}
+        onClick={() => setStartMenuOn(false)}
       />
-      {openSetting && (
+      {openSubWindow.wallpaperSetting && (
         <WallpaperSetting
-          setOpenSetting={setOpenSetting}
+          setOpenSubWindow={setOpenSubWindow}
           wallpaperList={wallpaperList}
           setWallpaperList={setWallpaperList}
           sampleImage={sampleImage}
@@ -72,11 +75,11 @@ function App() {
         />
       )}
       <MainWindow
-        on={on}
-        setOn={setOn}
+        startMenuOn={startMenuOn}
+        setStartMenuOn={setStartMenuOn}
         crtOn={crtOn}
         setCrtOn={setCrtOn}
-        setOpenSetting={setOpenSetting}
+        setOpenSubWindow={setOpenSubWindow}
         changeWall={changeWall}
         openProgramsList={openProgramsList}
         setOpenProgramsList={setOpenProgramsList}

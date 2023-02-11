@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Document() {
+export default function DocumentMenu() {
   return (
     <div
       style={{

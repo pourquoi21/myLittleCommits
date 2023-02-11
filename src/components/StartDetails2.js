@@ -22,10 +22,16 @@ function StartDetails2(props) {
           fontWeight: 300,
         }}
       >
-        <ul className="StartDetails-ul" onClick={() => props.setOn(false)}>
+        <ul
+          className="StartDetails-ul"
+          onClick={() => props.setStartMenuOn(false)}
+        >
           <li
             onClick={() => {
-              props.setOpenSetting(true);
+              props.setOpenSubWindow((prev) => ({
+                ...prev,
+                wallpaperSetting: true,
+              }));
               props.setOpenProgramsList((prev) => {
                 return [...prev, "바탕화면 설정"];
               });
