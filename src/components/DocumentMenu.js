@@ -3,14 +3,13 @@ import React from "react";
 export default function DocumentMenu() {
   return (
     <div
+      className="window"
       style={{
         position: "absolute",
-        bottom: "34px",
-        left: 0,
-        width: "250px",
-        boxSizing: "border-box",
+        margin: "0 auto",
+        width: "800px",
+        height: "650px",
       }}
-      className="window"
     >
       <div
         className="window-body"

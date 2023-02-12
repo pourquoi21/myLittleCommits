@@ -90,6 +90,13 @@ function MainWindow(props) {
                   Detail2: false,
                 })
               }
+              onClick={() => {
+                props.setOpenSubWindow((prev) => ({
+                  wallpaperSetting: false,
+                  document: true,
+                }));
+                props.setStartMenuOn(false);
+              }}
             >
               <img
                 src={require(`../../src/images/windows-docs.png`)}
@@ -149,6 +156,30 @@ function MainWindow(props) {
     // function onMouseLeave() {
     //   props.setOn(false);
     // }
+    const [currentOpenProgramList, setCurrentOpenProgramList] = React.useState(
+      []
+    );
+    function changeProgramList() {
+      if (props.openSubWindow.wallpaperSetting)
+        setCurrentOpenProgramList((prev) => {
+          return ["바탕화면 설정"];
+        });
+      else if (props.openSubWindow.document)
+        setCurrentOpenProgramList((prev) => {
+          return ["문서"];
+        });
+      else {
+        setCurrentOpenProgramList((prev) => {
+          return [];
+        });
+      }
+    }
+
+    React.useEffect(() => {
+      changeProgramList();
+    }, [props.openProgramsList]);
+
+    console.log(currentOpenProgramList);
 
     return (
       <div
@@ -211,13 +242,14 @@ function MainWindow(props) {
               시작
             </div>
           </button>
-          {props.openProgramsList.map((program) => (
+          {currentOpenProgramList.map((program) => (
             <div
               key={Date.now()}
               style={{
                 width: "180px",
                 height: "30px",
                 padding: "0 5px",
+                marginLeft: "3px",
                 marginRight: "1px",
                 boxSizing: "border-box",
                 background: "gainsboro",
@@ -293,6 +325,7 @@ function MainWindow(props) {
     });
   }
   //   console.log(isIconClicked);
+
   return (
     <>
       <div
@@ -365,6 +398,7 @@ function MainWindow(props) {
         setStartMenuOn={props.setStartMenuOn}
         crtOn={props.crtOn}
         setCrtOn={props.setCrtOn}
+        openSubWindow={props.openSubWindow}
         setOpenSubWindow={props.setOpenSubWindow}
         openProgramsList={props.openProgramsList}
         setOpenProgramsList={props.setOpenProgramsList}
