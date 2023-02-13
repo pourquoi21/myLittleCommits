@@ -29,12 +29,12 @@ function StartDetails2(props) {
           <li
             onClick={() => {
               props.setOpenSubWindow((prev) => ({
-                ...prev,
+                document: false,
                 wallpaperSetting: true,
               }));
-              props.setOpenProgramsList((prev) => {
-                return [...prev, "바탕화면 설정"];
-              });
+              // props.setOpenProgramsList((prev) => {
+              //   return [...prev, "바탕화면 설정"];
+              // });
             }}
           >
             {/* {isMouseOn.Deep1 && <StartDeepDetail1 />} */}

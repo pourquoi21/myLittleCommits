@@ -35,13 +35,6 @@ function App() {
   else if (wallpaperList.wall4) sampleImage = wallpaper4;
   else sampleImage = null;
 
-  // let currentOpenProgramList = [];
-  // if (openSubWindow.wallpaperSetting)
-  //   setOpenProgramsList((prev) => [...prev, "바탕화면 설정"]);
-  // else if (openSubWindow.document)
-  //   setOpenProgramsList((prev) => [...prev, "문서"]);
-  // else return;
-
   return (
     <div
       className="App"
@@ -69,7 +62,9 @@ function App() {
         }}
         onClick={() => setStartMenuOn(false)}
       />
-      {openSubWindow.document && <DocumentMenu />}
+      {openSubWindow.document && (
+        <DocumentMenu setOpenSubWindow={setOpenSubWindow} />
+      )}
       {openSubWindow.wallpaperSetting && (
         <WallpaperSetting
           setOpenSubWindow={setOpenSubWindow}
@@ -77,7 +72,7 @@ function App() {
           setWallpaperList={setWallpaperList}
           sampleImage={sampleImage}
           setChangeWall={setChangeWall}
-          setOpenProgramsList={setOpenProgramsList}
+          // setOpenProgramsList={setOpenProgramsList}
         />
       )}
 
@@ -89,8 +84,8 @@ function App() {
         openSubWindow={openSubWindow}
         setOpenSubWindow={setOpenSubWindow}
         changeWall={changeWall}
-        openProgramsList={openProgramsList}
-        setOpenProgramsList={setOpenProgramsList}
+        // openProgramsList={openProgramsList}
+        // setOpenProgramsList={setOpenProgramsList}
       />
     </div>
   );
