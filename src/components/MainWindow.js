@@ -177,9 +177,9 @@ function MainWindow(props) {
 
     React.useEffect(() => {
       changeProgramList();
-    }, [currentOpenProgramList]);
+    }, []);
 
-    console.log(currentOpenProgramList);
+    // console.log(currentOpenProgramList);
 
     return (
       <div

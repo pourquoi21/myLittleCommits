@@ -35,7 +35,7 @@ export default function DocumentMenu(props) {
         </div>
       </div>
       <div
-        className="window-body"
+        className="window-body documentMenu"
         style={{
           padding: "1px 2px",
           margin: 0,
@@ -44,7 +44,35 @@ export default function DocumentMenu(props) {
           fontWeight: 300,
         }}
       >
-        Hello
+        <ul className="document_menu" style={{ display: "flex" }}>
+          <li>파일(F)</li>
+          <li>보기(V)</li>
+          <li>도움말(H)</li>
+        </ul>
+        <hr />
+        <span
+          className="document_select"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <p>주소(D)</p>
+          <select>
+            <option>https://github.com/pourquoi21</option>
+          </select>
+        </span>
+        <div
+          className="document_content"
+          style={{
+            height: "100%",
+            background: "#fff",
+            borderTop: "2px solid gray",
+            borderLeft: "2px solid gray",
+            borderBottom: "1px solid #fff",
+            borderRight: "1px solid #fff",
+            boxShadow: "-1px -1px inset lightgray",
+          }}
+        >
+          <h2>Hello</h2>
+        </div>
       </div>
     </div>
   );
