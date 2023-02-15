@@ -19,6 +19,27 @@ li {
   list-style: none;
 }
 
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+h3 > span {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+#normal_hr {
+  height: 0.25px;
+  background-color: #2c2c2c;
+  border: 0;
+}
+
 /* CRT EFFECT */
 @keyframes flicker {
   0% {
@@ -388,4 +409,20 @@ li {
   background-image: url(images/github-mark.png);
   background-size: 17px;
   background-position: 5px;
+}
+
+.document_content div {
+  padding: 15px 0;
+}
+
+.document_content h3 {
+  font-size: 27px;
+}
+
+.document_content h4 {
+  font-size: 21px;
+}
+
+.document_content p {
+  font-size: 16px;
 }
