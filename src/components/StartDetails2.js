@@ -28,10 +28,18 @@ function StartDetails2(props) {
         >
           <li
             onClick={() => {
-              props.setOpenSubWindow((prev) => ({
-                document: false,
-                wallpaperSetting: true,
-              }));
+              const keys = Object.keys(props.openSubWindow);
+              props.setOpenSubWindow((prev) => {
+                let newObj = {};
+                for (let i = 0; i < keys.length; i++) {
+                  const key = keys[i];
+                  const value = props.openSubWindow[key];
+                  if (value === true || value === "active") newObj[key] = true;
+                  else newObj[key] = false;
+                }
+                // wallpaperSetting: false,
+                return { ...newObj, "바탕화면 설정": "active" };
+              });
               // props.setOpenProgramsList((prev) => {
               //   return [...prev, "바탕화면 설정"];
               // });

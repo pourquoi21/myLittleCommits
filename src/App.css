@@ -27,10 +27,16 @@ h3 {
 
 h4 {
   margin-bottom: 0;
+  margin-top: 42px;
 }
 
 h3 > span {
   font-size: 18px;
+  font-weight: normal;
+}
+
+h4 > span {
+  font-size: 16px;
   font-weight: normal;
 }
 
@@ -244,6 +250,23 @@ h3 > span {
 }
 /* CRT EFFECT END */
 
+.startLineList {
+  background: #c4c4c4;
+  border-left: 2px solid rgba(255, 255, 255, 0.8);
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  border-right: 2px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.startLineList.active {
+  font-weight: bold;
+  background: gainsboro;
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
 .startContent-ul {
   width: 100%;
   margin: 0;
@@ -267,6 +290,14 @@ h3 > span {
 
 #underCons-li span {
   cursor: auto;
+}
+
+#program_div {
+  z-index: 2;
+}
+
+#program_active {
+  z-index: 4;
 }
 
 .startContent-ul li:hover {
@@ -425,4 +456,8 @@ h3 > span {
 
 .document_content p {
   font-size: 16px;
+}
+
+.document_projects p {
+  margin: 6px;
 }

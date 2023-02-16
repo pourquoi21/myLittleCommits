@@ -15,9 +15,24 @@ function App() {
   const [startMenuOn, setStartMenuOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
   const [openSubWindow, setOpenSubWindow] = React.useState({
-    wallpaperSetting: false,
-    document: false,
+    "바탕화면 설정": false,
+    문서: false,
   });
+  // const [isProgActive, setIsProgActive] = React.useState({
+  //   "바탕화면 설정": false,
+  //   문서: false,
+  // });
+
+  // const [currentOpenProgramObj, setCurrentOpenProgramObj] = React.useState({
+  //   "바탕화면 설정": openSubWindow.wallpaperSetting,
+  //   문서: openSubWindow.document,
+  // });
+
+  // console.log(openSubWindow);
+  // // console.log(currentOpenProgramObj);
+  // console.log(openSubWindow.문서);
+  // console.log(openSubWindow["바탕화면 설정"]);
+
   const [wallpaperList, setWallpaperList] = React.useState({
     wall1: true,
     wall2: false,
@@ -26,7 +41,6 @@ function App() {
     wall5: false,
   });
   const [changeWall, setChangeWall] = React.useState("");
-  const [openProgramsList, setOpenProgramsList] = React.useState([]);
 
   let sampleImage;
   if (wallpaperList.wall1) sampleImage = wallpaper1;
@@ -62,18 +76,31 @@ function App() {
         }}
         onClick={() => setStartMenuOn(false)}
       />
-      {openSubWindow.document && (
-        <DocumentMenu setOpenSubWindow={setOpenSubWindow} />
+      {(openSubWindow.문서 || openSubWindow.문서 == "active") && (
+        <DocumentMenu
+          setStartMenuOn={setStartMenuOn}
+          openSubWindow={openSubWindow}
+          setOpenSubWindow={setOpenSubWindow}
+          // setIsProgActive={setIsProgActive}
+          // currentOpenProgramObj={currentOpenProgramObj}
+        />
       )}
-      {openSubWindow.wallpaperSetting && (
+      {openSubWindow["바탕화면 설정"] ||
+      openSubWindow["바탕화면 설정"] == "active" ? (
         <WallpaperSetting
+          setStartMenuOn={setStartMenuOn}
+          openSubWindow={openSubWindow}
           setOpenSubWindow={setOpenSubWindow}
           wallpaperList={wallpaperList}
           setWallpaperList={setWallpaperList}
           sampleImage={sampleImage}
           setChangeWall={setChangeWall}
+          // setIsProgActive={setIsProgActive}
+          // currentOpenProgramObj={currentOpenProgramObj}
           // setOpenProgramsList={setOpenProgramsList}
         />
+      ) : (
+        ""
       )}
 
       <MainWindow
@@ -84,6 +111,11 @@ function App() {
         openSubWindow={openSubWindow}
         setOpenSubWindow={setOpenSubWindow}
         changeWall={changeWall}
+        // isProgActive={isProgActive}
+        // setIsProgActive={setIsProgActive}
+        // currentOpenProgramObj={currentOpenProgramObj}
+        // setCurrentOpenProgramObj={setCurrentOpenProgramObj}
+
         // openProgramsList={openProgramsList}
         // setOpenProgramsList={setOpenProgramsList}
       />

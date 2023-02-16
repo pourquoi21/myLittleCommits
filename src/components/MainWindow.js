@@ -3,7 +3,6 @@ import Window from "../images/windows-4.png";
 import WindowBar from "../images/windows-bar.png";
 import StartDetails1 from "./StartDetails1";
 import StartDetails2 from "./StartDetails2";
-import DocumentMenu from "./DocumentMenu";
 
 function MainWindow(props) {
   function StartContent(props) {
@@ -91,10 +90,19 @@ function MainWindow(props) {
                 })
               }
               onClick={() => {
-                props.setOpenSubWindow((prev) => ({
-                  wallpaperSetting: false,
-                  document: true,
-                }));
+                const keys = Object.keys(props.openSubWindow);
+                props.setOpenSubWindow((prev) => {
+                  let newObj = {};
+                  for (let i = 0; i < keys.length; i++) {
+                    const key = keys[i];
+                    const value = props.openSubWindow[key];
+                    if (value === true || value === "active")
+                      newObj[key] = true;
+                    else newObj[key] = false;
+                  }
+                  // wallpaperSetting: false,
+                  return { ...newObj, 문서: "active" };
+                });
                 props.setStartMenuOn(false);
               }}
             >
@@ -125,6 +133,7 @@ function MainWindow(props) {
                   setCrtOn={props.setCrtOn}
                   crtOn={props.crtOn}
                   setStartMenuOn={props.setStartMenuOn}
+                  openSubWindow={props.openSubWindow}
                   setOpenSubWindow={props.setOpenSubWindow}
                   setOpenProgramsList={props.setOpenProgramsList}
                 />
@@ -156,28 +165,121 @@ function MainWindow(props) {
     // function onMouseLeave() {
     //   props.setOn(false);
     // }
-    const [currentOpenProgramList, setCurrentOpenProgramList] = React.useState(
-      []
-    );
-    function changeProgramList() {
-      if (props.openSubWindow.wallpaperSetting)
-        setCurrentOpenProgramList((prev) => {
-          return ["바탕화면 설정"];
-        });
-      else if (props.openSubWindow.document)
-        setCurrentOpenProgramList((prev) => {
-          return ["문서"];
-        });
-      else {
-        setCurrentOpenProgramList((prev) => {
-          return [];
-        });
-      }
-    }
+    // const [currentOpenProgramList, setCurrentOpenProgramList] = React.useState(
+    //   []
+    // );
 
-    React.useEffect(() => {
-      changeProgramList();
-    }, []);
+    // console.log(currentOpenProgramObj);
+
+    // function changeProgramList() {
+    //   if (props.openSubWindow.wallpaperSetting)
+    //     setCurrentOpenProgramList((prev) => {
+    //       return [...prev, "바탕화면 설정"];
+    //     });
+    //   else if (props.openSubWindow.document)
+    //     setCurrentOpenProgramList((prev) => {
+    //       return [...prev, "문서"];
+    //     });
+    //   else {
+    //     setCurrentOpenProgramList((prev) => {
+    //       return [];
+    //     });
+    //   }
+    // }
+
+    // 어떻게 해야 프로그램이 켜진 순서대로 시작표시줄에 정렬할 수 있을지.
+    // React.useEffect(() => {
+    //   if (
+    //     currentOpenProgramObj["바탕화면 설정"] ||
+    //     props.isProgActive["바탕화면 설정"]
+    //   ) {
+    //     if (currentOpenProgramObj.문서 || props.isProgActive.문서) {
+    //       console.log("wall/docu", currentOpenProgramObj);
+    //     } else console.log("wall", props.isProgActive["바탕화면 설정"]);
+    //   } else if (currentOpenProgramObj.문서 || props.isProgActive.문서) {
+    //     if (
+    //       currentOpenProgramObj["바탕화면 설정"] ||
+    //       props.isProgActive["바탕화면 설정"]
+    //     ) {
+    //       console.log("docu/wall");
+    //     } else console.log("docu");
+    //   } else console.log("nothing", Object.keys(currentOpenProgramObj));
+    // }, []);
+
+    // 레거시 코드. 따로 currentOpenProgramList가 있었을 때의 코드.
+    // React.useEffect(() => {
+    //   if (props.openSubWindow.document && props.openSubWindow.wallpaperSetting)
+    //     setCurrentOpenProgramList((prev) => {
+    //       return ["문서", "바탕화면 설정"];
+    //     });
+    //   else if (
+    //     props.openSubWindow.document === false &&
+    //     props.openSubWindow.wallpaperSetting
+    //   )
+    //     setCurrentOpenProgramList((prev) => {
+    //       return ["바탕화면 설정"];
+    //     });
+    //   else if (
+    //     props.openSubWindow.wallpaperSetting === false &&
+    //     props.openSubWindow.document
+    //   )
+    //     setCurrentOpenProgramList((prev) => {
+    //       return ["문서"];
+    //     });
+    // }, []);
+
+    // 시작표시줄에서 클릭된 프로그램에게만 Active 부여(버튼 모양 다르게하기위함)
+    // function isProgClicked(event) {
+    //   const { id } = event.target;
+    //   const keys = Object.keys(props.isProgActive);
+    //   props.setIsProgActive((prev) => {
+    //     let newObj = {};
+    //     for (let i = 0; i < keys.length; i++) {
+    //       const key = keys[i];
+    //       const value = props.isProgActive[key];
+    //       newObj[key] = false;
+    //     }
+    //     // console.log(newObj);
+    //     console.log(props.isProgActive);
+    //     return { ...newObj, [id]: "active" };
+    //   });
+    //   // console.log(event.target.id);
+    // }
+
+    function isProgClicked(event) {
+      const { id } = event.target;
+      const keys = Object.keys(props.openSubWindow);
+      props.setOpenSubWindow((prev) => {
+        let newObj = {};
+        for (let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          const value = props.openSubWindow[key];
+          if (value || value === "active") newObj[key] = true;
+          else newObj[key] = false;
+        }
+        // console.log(newObj);
+        // console.log(currentOpenProgramObj);
+        return { ...newObj, [id]: "active" };
+      });
+      // console.log(event.target.id);
+    }
+    // console.log(props.currentOpenProgramObj);
+
+    // 열린 프로그램만 시작표시줄에 나타내기
+    function openProgramList() {
+      const keys = Object.keys(props.openSubWindow);
+      let newObj = {};
+
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const value = props.openSubWindow[key];
+        // console.log("when we are mapping this", newObj);
+        if (value || value === "active") newObj = { ...newObj, [key]: value };
+        else newObj = { ...newObj };
+      }
+      // console.log(newObj);
+      return newObj;
+    }
 
     // console.log(currentOpenProgramList);
 
@@ -193,6 +295,7 @@ function MainWindow(props) {
           boxSizing: "border-box",
           cursor: "default",
           fontFamily: "Noto Sans KR",
+          zIndex: "5",
         }}
         className="window"
         // onMouseLeave={onMouseLeave}
@@ -202,6 +305,7 @@ function MainWindow(props) {
             setCrtOn={props.setCrtOn}
             crtOn={props.crtOn}
             setStartMenuOn={props.setStartMenuOn}
+            openSubWindow={props.openSubWindow}
             setOpenSubWindow={props.setOpenSubWindow}
             setOpenProgramsList={props.setOpenProgramsList}
           />
@@ -242,35 +346,59 @@ function MainWindow(props) {
               시작
             </div>
           </button>
-          {currentOpenProgramList.map((program) => (
+          {/* {currentOpenProgramList.map((program, index) => (
             <div
-              key={Date.now()}
+              onClick={(event) => isProgClicked(event)}
+              id={program}
+              className="startLineList"
+              key={index}
               style={{
                 width: "180px",
-                height: "30px",
+                height: "32px",
                 padding: "0 5px",
-                marginLeft: "3px",
-                marginRight: "1px",
+                marginLeft: "1.5px",
+                marginRight: "1.5px",
                 boxSizing: "border-box",
-                background: "gainsboro",
+                background: "#c4c4c4",
                 display: "flex",
                 alignItems: "center",
                 textAlign: "center",
                 fontSize: "15px",
-                borderLeft: "2px solid rgba(0,0,0,0.2)",
-                borderTop: "2px solid rgba(0,0,0,0.2)",
-                borderRight: "2px solid rgba(255,255,255,0.5)",
-                borderBottom: "2px solid rgba(255,255,255,0.5)",
+                borderLeft: "2px solid rgba(255,255,255,0.8)",
+                borderTop: "2px solid rgba(255,255,255,0.8)",
+                borderRight: "2px solid rgba(0,0,0,0.5)",
+                borderBottom: "2px solid rgba(0,0,0,0.5)",
+              }}
+            > */}
+          {Object.entries(openProgramList()).map((program) => (
+            <div
+              onClick={(event) => isProgClicked(event)}
+              id={program[0]}
+              className={`startLineList ${
+                program[1] == "active" ? "active" : null
+              }`}
+              key={program[0]}
+              style={{
+                width: "180px",
+                height: "32px",
+                padding: "0 5px",
+                marginLeft: "1.5px",
+                marginRight: "1.5px",
+                boxSizing: "border-box",
+                display: "flex",
+                alignItems: "center",
+                textAlign: "center",
+                fontSize: "15px",
               }}
             >
               <img
                 src={require(`../../src/images/windows-dir.png`)}
                 style={{ width: "18px", marginRight: "5px" }}
               />
-              {program}
+              {program[0]}
             </div>
           ))}
-          // needs map here for indicating open programs' names
+
           <input
             disabled
             type="text"
@@ -402,6 +530,10 @@ function MainWindow(props) {
         setOpenSubWindow={props.setOpenSubWindow}
         openProgramsList={props.openProgramsList}
         setOpenProgramsList={props.setOpenProgramsList}
+        isProgActive={props.isProgActive}
+        setIsProgActive={props.setIsProgActive}
+        currentOpenProgramObj={props.currentOpenProgramObj}
+        setCurrentOpenProgramObj={props.setCurrentOpenProgramObj}
       />
     </>
   );
