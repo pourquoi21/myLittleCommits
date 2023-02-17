@@ -8,7 +8,7 @@ export default function DocumentMenu(props) {
     setPosition({ x: data.x, y: data.y });
   };
   return (
-    <Draggable onDrag={(e, data) => trackPos(data)}>
+    <Draggable onDrag={(e, data) => trackPos(data)} handle="strong">
       <div
         id={
           props.openSubWindow.문서 === "active"
@@ -39,30 +39,32 @@ export default function DocumentMenu(props) {
           props.setStartMenuOn(false);
         }}
       >
-        <div className="title-bar" style={{ height: "14px" }}>
-          <div className="title-bar-text">About Jay...</div>
-          <div className="title-bar-controls">
-            <button aria-label="Help" />
-            <button
-              aria-label="Close"
-              onClick={(event) => {
-                event.stopPropagation();
-                props.setOpenSubWindow((prev) => ({
-                  ...prev,
-                  문서: false,
-                }));
-                // props.setOpenProgramsList((prev) => {
-                //   let newList = [];
-                //   for (let i = 0; i < prev.length; i++) {
-                //     if (prev[i] === "바탕화면 설정") newList.push();
-                //     else newList.push(prev[i]);
-                //   }
-                //   return newList;
-                // });
-              }}
-            />
+        <strong className="cursor">
+          <div className="title-bar" style={{ height: "14px" }}>
+            <div className="title-bar-text">About Jay...</div>
+            <div className="title-bar-controls">
+              <button aria-label="Help" />
+              <button
+                aria-label="Close"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  props.setOpenSubWindow((prev) => ({
+                    ...prev,
+                    문서: false,
+                  }));
+                  // props.setOpenProgramsList((prev) => {
+                  //   let newList = [];
+                  //   for (let i = 0; i < prev.length; i++) {
+                  //     if (prev[i] === "바탕화면 설정") newList.push();
+                  //     else newList.push(prev[i]);
+                  //   }
+                  //   return newList;
+                  // });
+                }}
+              />
+            </div>
           </div>
-        </div>
+        </strong>
         <div
           className="window-body documentMenu"
           style={{
