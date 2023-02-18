@@ -121,7 +121,8 @@ export default function DocumentMenu(props) {
                 웹 컨텐츠 디자인을 하면서 자연히 웹 페이지 제작에도 관심을 갖게
                 되었습니다.
                 <br />
-                현재는 정보처리기사 자격증 취득을 위한 공부를 병행하고 있으며,
+                현재는 정보처리기사 자격증 취득을 위한 공부를 병행하고 있으며
+                <b>(필기 합격)</b>,
                 <br />
                 Notion에 배운 것을 기록하거나, GitHub에 1일 1커밋을 하려
                 노력합니다.
@@ -168,9 +169,9 @@ export default function DocumentMenu(props) {
                 <br />이 프로젝트를 통해 JavaScript를 HTML처럼 사용할 수 있는
                 React에 대해 처음 관심을 갖게 되었습니다.
               </p>
-              <h4>🥗React Portfolio</h4>
+              <h4>🥗React Laptop</h4>
               <p>
-                3개의 토이 프로젝트를 포함한 React 포트폴리오입니다.
+                3개의 토이 프로젝트를 포함한 React 페이지입니다.
                 <br />
                 useState와 useEffect를 익히며 만든 밈 생성기,
                 <br />
@@ -201,7 +202,8 @@ export default function DocumentMenu(props) {
                 있었습니다.
                 <br />
                 개인 앱을 만들면서 좋은 점은 잘못된 코드가 자칫 일으킬 수 있는
-                문제를 스스로 해결할 기회를 얻는 것임을 느끼고 있습니다.
+                문제를 스스로 해결할 기회를 얻는 것임을 느끼며 디버깅하고
+                있습니다.
                 <br />
                 아직 구현하지 못한 아쉬운 점이 많지만, 차차 수정해나갈
                 계획입니다.

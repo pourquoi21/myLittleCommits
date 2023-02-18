@@ -32,7 +32,7 @@ export default function StartDeepDetail3(props) {
               src={require(`../../src/images/windows-ie.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
-            <span>React portfolio</span>
+            <span>React laptop</span>
           </li>
           <li>
             <img
