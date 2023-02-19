@@ -66,7 +66,7 @@ export default function DocumentMenu(props) {
           </div>
         </strong>
         <div
-          className="window-body documentMenu"
+          className="window-body windowsMenu"
           style={{
             height: "722px",
             padding: "1px 2px",
@@ -78,7 +78,7 @@ export default function DocumentMenu(props) {
           }}
         >
           <ul
-            className="document_menu"
+            className="windows_menu"
             style={{ display: "flex", height: "24px" }}
           >
             <li>파일(F)</li>
@@ -191,15 +191,14 @@ export default function DocumentMenu(props) {
                 Windows 98을 경험해 본 사람으로서 이를 오마쥬하는 감각으로,
                 비슷한 느낌의 페이지를 만들고 싶었습니다.
                 <br />
-                순수하게 취향을 반영하여 만들기 시작했으나, 만들면서 프로그램을
-                만드는 데에는 많은 고려사항이 필요하다는 것도 함께 깨달았습니다.
+                순수하게 취향을 반영하여 만들기 시작했으나, 프로그램을 만드는
+                데에는 많은 고려사항이 필요하다는 것도 함께 깨달았습니다.
                 <br />
                 특히 변수의 이름을 신경써서 지어야 한다는 것을 앱을 제작하는
                 중간에 일일이 수정하면서 뼈저리게 알 수 있었고,
                 <br />
-                프로젝트에 임하기 전에 어떤 기능이 필요할지를 계획하는 단계가
-                필요하겠다는 것을 이론적으로뿐 아니라 피부로 깨달을 수
-                있었습니다.
+                프로젝트에 임하기 전에 어떤 기능이 필요할지를 계획하는 단계가 왜
+                필요한지를 이론적으로뿐 아니라 피부로 깨달을 수 있었습니다.
                 <br />
                 개인 앱을 만들면서 좋은 점은 잘못된 코드가 자칫 일으킬 수 있는
                 문제를 스스로 해결할 기회를 얻는 것임을 느끼며 디버깅하고

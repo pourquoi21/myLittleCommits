@@ -7,6 +7,74 @@ export default function Notepad(props) {
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
   };
+
+  const [noteMenu, setNoteMenu] = React.useState(false);
+  const [note, setNote] = React.useState("");
+
+  function handleNote(event) {
+    const { value } = event.target;
+    setNote((prev) => value);
+  }
+
+  function NotepadMenu() {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: "4px",
+          top: "48px",
+          width: "180px",
+          boxSizing: "border-box",
+        }}
+        className="window"
+      >
+        <div
+          className="window-body"
+          style={{
+            padding: "1px",
+            margin: 0,
+            display: "flex",
+            alignItems: "center",
+            fontFamily: "Noto Sans KR",
+            fontWeight: 300,
+          }}
+        >
+          <ul
+            className="Notepad_ul"
+            style={{
+              width: "100%",
+              padding: "0",
+              fontSize: "13px",
+            }}
+          >
+            <li onClick={() => setNoteMenu(false)}>
+              <span>새로 만들기(N)</span>
+              <span>CTRL+N</span>
+            </li>
+            <li onClick={() => setNoteMenu(false)}>
+              <a
+                href={`data:text/plain;charset=utf-8,${note}`}
+                download="note.txt"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <span>저장(S)</span>
+                <span>CTRL+S</span>
+              </a>
+            </li>
+            <hr />
+            <li onClick={() => setNoteMenu(false)}>
+              <span>끝내기(X)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Draggable onDrag={(e, data) => trackPos(data)} handle="strong">
       <div
@@ -59,7 +127,7 @@ export default function Notepad(props) {
           </div>
         </strong>
         <div
-          className="window-body documentMenu"
+          className="window-body windowsMenu"
           style={{
             height: "523px",
             padding: "1px 2px",
@@ -70,8 +138,9 @@ export default function Notepad(props) {
             fontWeight: 300,
           }}
         >
+          {noteMenu && <NotepadMenu />}
           <ul
-            className="document_menu"
+            className="windows_menu"
             style={{
               display: "flex",
               alignItems: "center",
@@ -80,13 +149,21 @@ export default function Notepad(props) {
               padding: 0,
             }}
           >
-            <li>파일(F)</li>
+            <li
+              className={noteMenu && "menu_selected"}
+              onClick={() => setNoteMenu((prev) => !prev)}
+            >
+              파일(F)
+            </li>
             <li>편집(E)</li>
             <li>찾기(S)</li>
             <li>도움말(H)</li>
           </ul>
           <textarea
             style={{ height: "100%", resize: "none", fontSize: "15px" }}
+            onClick={() => setNoteMenu(false)}
+            onChange={(event) => handleNote(event)}
+            value={note}
           />
           {/* <div
             className="document_content"
