@@ -13,10 +13,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A window 98 project done by React.
 
 리액트로 제작한 윈도우 98 느낌의 사이트입니다.
-* React-draggable
-  * Windows are draggable with React-draggable. 
-  > `React-draggable`을 이용해 각 윈도우를 드래그할 수 있게 했습니다.
-  (http://react-grid-layout.github.io/react-draggable/example/)
+* Document
+  * Document includes a cover letter. 
+  > '문서'메뉴에 자기소개서가 있습니다.
 * CRT Effect
   * CRT Effect made by css that you can turn off.
   > CSS를 이용해 CRT 이펙트를 재현하였고 메뉴를 통해 끌 수 있습니다.
