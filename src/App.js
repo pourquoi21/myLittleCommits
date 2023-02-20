@@ -15,6 +15,7 @@ function App() {
   const [startMenuOn, setStartMenuOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
   const [openSubWindow, setOpenSubWindow] = React.useState({
+    메모장: false,
     "바탕화면 설정": false,
     문서: false,
   });
@@ -70,7 +71,6 @@ function App() {
         style={{
           height: "100vh",
           width: "100vw",
-          // zIndex: "20",
           position: "absolute",
           top: 0,
           left: 0,
@@ -103,7 +103,12 @@ function App() {
       ) : (
         ""
       )}
-      <Notepad />
+      {(openSubWindow.메모장 || openSubWindow.메모장 == "active") && (
+        <Notepad
+          openSubWindow={openSubWindow}
+          setOpenSubWindow={setOpenSubWindow}
+        />
+      )}
 
       <MainWindow
         startMenuOn={startMenuOn}

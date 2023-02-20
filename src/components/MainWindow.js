@@ -3,6 +3,7 @@ import Window from "../images/windows-4.png";
 import WindowBar from "../images/windows-bar.png";
 import StartDetails1 from "./StartDetails1";
 import StartDetails2 from "./StartDetails2";
+import StartLineClock from "./StartLineClock";
 
 function MainWindow(props) {
   function StartContent(props) {
@@ -161,91 +162,9 @@ function MainWindow(props) {
   }
 
   function StartLine(props) {
-    // onMouseLeave, Start Contents is closed
-    // function onMouseLeave() {
-    //   props.setOn(false);
-    // }
-    // const [currentOpenProgramList, setCurrentOpenProgramList] = React.useState(
-    //   []
-    // );
-
-    // console.log(currentOpenProgramObj);
-
-    // function changeProgramList() {
-    //   if (props.openSubWindow.wallpaperSetting)
-    //     setCurrentOpenProgramList((prev) => {
-    //       return [...prev, "바탕화면 설정"];
-    //     });
-    //   else if (props.openSubWindow.document)
-    //     setCurrentOpenProgramList((prev) => {
-    //       return [...prev, "문서"];
-    //     });
-    //   else {
-    //     setCurrentOpenProgramList((prev) => {
-    //       return [];
-    //     });
-    //   }
-    // }
-
-    // 어떻게 해야 프로그램이 켜진 순서대로 시작표시줄에 정렬할 수 있을지.
-    // React.useEffect(() => {
-    //   if (
-    //     currentOpenProgramObj["바탕화면 설정"] ||
-    //     props.isProgActive["바탕화면 설정"]
-    //   ) {
-    //     if (currentOpenProgramObj.문서 || props.isProgActive.문서) {
-    //       console.log("wall/docu", currentOpenProgramObj);
-    //     } else console.log("wall", props.isProgActive["바탕화면 설정"]);
-    //   } else if (currentOpenProgramObj.문서 || props.isProgActive.문서) {
-    //     if (
-    //       currentOpenProgramObj["바탕화면 설정"] ||
-    //       props.isProgActive["바탕화면 설정"]
-    //     ) {
-    //       console.log("docu/wall");
-    //     } else console.log("docu");
-    //   } else console.log("nothing", Object.keys(currentOpenProgramObj));
-    // }, []);
-
-    // 레거시 코드. 따로 currentOpenProgramList가 있었을 때의 코드.
-    // React.useEffect(() => {
-    //   if (props.openSubWindow.document && props.openSubWindow.wallpaperSetting)
-    //     setCurrentOpenProgramList((prev) => {
-    //       return ["문서", "바탕화면 설정"];
-    //     });
-    //   else if (
-    //     props.openSubWindow.document === false &&
-    //     props.openSubWindow.wallpaperSetting
-    //   )
-    //     setCurrentOpenProgramList((prev) => {
-    //       return ["바탕화면 설정"];
-    //     });
-    //   else if (
-    //     props.openSubWindow.wallpaperSetting === false &&
-    //     props.openSubWindow.document
-    //   )
-    //     setCurrentOpenProgramList((prev) => {
-    //       return ["문서"];
-    //     });
-    // }, []);
-
-    // 시작표시줄에서 클릭된 프로그램에게만 Active 부여(버튼 모양 다르게하기위함)
-    // function isProgClicked(event) {
-    //   const { id } = event.target;
-    //   const keys = Object.keys(props.isProgActive);
-    //   props.setIsProgActive((prev) => {
-    //     let newObj = {};
-    //     for (let i = 0; i < keys.length; i++) {
-    //       const key = keys[i];
-    //       const value = props.isProgActive[key];
-    //       newObj[key] = false;
-    //     }
-    //     // console.log(newObj);
-    //     console.log(props.isProgActive);
-    //     return { ...newObj, [id]: "active" };
-    //   });
-    //   // console.log(event.target.id);
-    // }
-
+    // 시작표시줄의 프로그램이 클릭됐을 때, 그 타겟의 id값을 구해
+    // openSubWindow props에 active로 표시해주기
+    // active된 프로그램은 active라는 className을 얻어 상위로 올라옴
     function isProgClicked(event) {
       const { id } = event.target;
       const keys = Object.keys(props.openSubWindow);
@@ -266,6 +185,8 @@ function MainWindow(props) {
     // console.log(props.currentOpenProgramObj);
 
     // 열린 프로그램만 시작표시줄에 나타내기
+    // 처음 정해진 openSubWindow의 차례에 종속적이지 않게 만들어야하는데..
+    // newObj에 넣어주는 key:value값이 openSubWindow로부터 온거라..
     function openProgramList() {
       const keys = Object.keys(props.openSubWindow);
       let newObj = {};
@@ -295,7 +216,7 @@ function MainWindow(props) {
           boxSizing: "border-box",
           cursor: "default",
           fontFamily: "Noto Sans KR",
-          zIndex: "5",
+          zIndex: "3",
         }}
         className="window"
         // onMouseLeave={onMouseLeave}
@@ -387,7 +308,6 @@ function MainWindow(props) {
                 boxSizing: "border-box",
                 display: "flex",
                 alignItems: "center",
-                textAlign: "center",
                 fontSize: "15px",
               }}
             >
@@ -399,12 +319,7 @@ function MainWindow(props) {
             </div>
           ))}
 
-          <input
-            disabled
-            type="text"
-            value="Well.."
-            style={{ height: "3em", marginLeft: "auto" }}
-          />
+          <StartLineClock />
         </div>
       </div>
     );
@@ -470,6 +385,7 @@ function MainWindow(props) {
           justifyContent: "flex-start",
           // alignItems: "center",
         }}
+        onClick={() => props.setStartMenuOn(false)}
       >
         <div
           className="icon-line"
@@ -512,6 +428,19 @@ function MainWindow(props) {
                 width: "50px",
                 marginBottom: "5px",
                 marginLeft: "-10px",
+              }}
+              onDoubleClick={() => {
+                const keys = Object.keys(props.openSubWindow);
+                props.setOpenSubWindow((prev) => {
+                  let newObj = {};
+                  for (let i = 0; i < keys.length; i++) {
+                    const key = keys[i];
+                    const value = props.openSubWindow[key];
+                    if (value || value === "active") newObj[key] = true;
+                    else newObj[key] = false;
+                  }
+                  return { ...newObj, 메모장: "active" };
+                });
               }}
             />
             <span className={isIconClicked.memo ? "iconName_selected" : null}>

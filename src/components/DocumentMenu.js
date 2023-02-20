@@ -52,14 +52,6 @@ export default function DocumentMenu(props) {
                     ...prev,
                     문서: false,
                   }));
-                  // props.setOpenProgramsList((prev) => {
-                  //   let newList = [];
-                  //   for (let i = 0; i < prev.length; i++) {
-                  //     if (prev[i] === "바탕화면 설정") newList.push();
-                  //     else newList.push(prev[i]);
-                  //   }
-                  //   return newList;
-                  // });
                 }}
               />
             </div>
@@ -69,7 +61,7 @@ export default function DocumentMenu(props) {
           className="window-body windowsMenu"
           style={{
             height: "722px",
-            padding: "1px 2px",
+            padding: "0px 2px",
             margin: 0,
             boxSizing: "border-box",
             display: "flex",
@@ -79,7 +71,7 @@ export default function DocumentMenu(props) {
         >
           <ul
             className="windows_menu"
-            style={{ display: "flex", height: "24px" }}
+            style={{ display: "flex", height: "22px" }}
           >
             <li>파일(F)</li>
             <li>보기(V)</li>
@@ -112,7 +104,7 @@ export default function DocumentMenu(props) {
             }}
           >
             <div>
-              <h3 style={{ marginBottom: "10px" }}>🙋‍♀️전주민</h3>
+              <h3 style={{ marginBottom: "10px" }}>🙋‍♀️Jay</h3>
               <hr id="normal_hr" />
               <p>
                 새로운 것을 배우고 학습하는 것을 좋아하여 영어영문학과 졸업 후
@@ -122,7 +114,7 @@ export default function DocumentMenu(props) {
                 되었습니다.
                 <br />
                 현재는 정보처리기사 자격증 취득을 위한 공부를 병행하고 있으며
-                <b>(필기 합격)</b>,
+                <span style={{ fontSize: "14px" }}>(필기 합격)</span>,
                 <br />
                 Notion에 배운 것을 기록하거나, GitHub에 1일 1커밋을 하려
                 노력합니다.
@@ -173,16 +165,14 @@ export default function DocumentMenu(props) {
               <p>
                 3개의 토이 프로젝트를 포함한 React 페이지입니다.
                 <br />
-                useState와 useEffect를 익히며 만든 밈 생성기,
+                useState와 useEffect를 익히며 만든 밈 생성기, LocalStorage와
+                날씨 API를 이용해 만든 일기 앱, Tasty API를 통해 제작한 레시피
+                추천 앱이 있습니다.
                 <br />
-                LocalStorage와 날씨 API를 이용해 만든 일기 앱,
-                <br />
-                Tasty API를 통해 제작한 레시피 추천 앱이 있습니다.
-                <br />
-                특히 레시피 추천 앱은 개인적으로 API를 골라 제작한 앱으로, 이
-                앱을 제작하면서 메인 페이지에서 각각의 토이프로젝트로 이동할
-                때마다 state를 넘겨주는 것에 더 깊은 이해를 얻고, 익숙해질 수
-                있는 계기가 되었습니다.
+                특히 레시피 추천 앱은 여러가지 API 중 흥미가 있는 API를 골라
+                제작한 앱으로, 이 앱을 제작하면서 메인 페이지에서 각각의
+                토이프로젝트로 이동할 때마다 state를 넘겨주는 것에 더 깊은
+                이해를 얻고, 익숙해질 수 있는 계기가 되었습니다.
               </p>
               <h4>
                 📁Windows 98 Project <span>(Where now we are)</span>
@@ -194,8 +184,8 @@ export default function DocumentMenu(props) {
                 순수하게 취향을 반영하여 만들기 시작했으나, 프로그램을 만드는
                 데에는 많은 고려사항이 필요하다는 것도 함께 깨달았습니다.
                 <br />
-                특히 변수의 이름을 신경써서 지어야 한다는 것을 앱을 제작하는
-                중간에 일일이 수정하면서 뼈저리게 알 수 있었고,
+                특히 앱을 제작하는 중간에 함수의 이름을 수정하면서 변수의 이름을
+                신경써서 지어야 한다는 것을 뼈저리게 느낄 수 있었고,
                 <br />
                 프로젝트에 임하기 전에 어떤 기능이 필요할지를 계획하는 단계가 왜
                 필요한지를 이론적으로뿐 아니라 피부로 깨달을 수 있었습니다.

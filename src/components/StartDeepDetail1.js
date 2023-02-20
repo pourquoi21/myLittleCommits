@@ -8,7 +8,6 @@ export default function StartDeepDetail1(props) {
         left: "140px",
         width: "180px",
         boxSizing: "border-box",
-        cursor: "pointer",
       }}
       className="window"
     >
@@ -32,7 +31,11 @@ export default function StartDeepDetail1(props) {
               src={require(`../../src/images/windows-ie.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
-            <span>HTML&CSS Portfolio</span>
+            <span>
+              <a href="https://pourquoi21.github.io/pourquoi1/port/index.html">
+                HTML&CSS Portfolio
+              </a>
+            </span>
           </li>
         </ul>
       </div>

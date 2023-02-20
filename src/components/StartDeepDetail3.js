@@ -8,7 +8,6 @@ export default function StartDeepDetail3(props) {
         left: "140px",
         width: "160px",
         boxSizing: "border-box",
-        cursor: "pointer",
       }}
       className="window"
     >
@@ -32,14 +31,22 @@ export default function StartDeepDetail3(props) {
               src={require(`../../src/images/windows-ie.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
-            <span>React laptop</span>
+            <span>
+              <a href="https://pourquoi21.github.io/react_laptop/">
+                React laptop
+              </a>
+            </span>
           </li>
           <li>
             <img
               src={require(`../../src/images/windows-ie.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
-            <span>React movieapp</span>
+            <span>
+              <a href="https://pourquoi21.github.io/react_movieapp/">
+                React movieapp
+              </a>
+            </span>
           </li>
         </ul>
       </div>

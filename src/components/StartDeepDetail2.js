@@ -8,7 +8,6 @@ export default function StartDeepDetail2(props) {
         left: "140px",
         width: "200px",
         boxSizing: "border-box",
-        cursor: "pointer",
       }}
       className="window"
     >
@@ -32,7 +31,11 @@ export default function StartDeepDetail2(props) {
               src={require(`../../src/images/windows-ie.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
-            <span>Momentum clone website</span>
+            <span>
+              <a href="https://pourquoi21.github.io/momentum/">
+                Momentum clone website
+              </a>
+            </span>
           </li>
         </ul>
       </div>
