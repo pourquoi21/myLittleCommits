@@ -7,6 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### [View site](https://pourquoi21.github.io/myLittleCommits/)
 
+![initial](https://user-images.githubusercontent.com/111559629/220116409-b6b39b23-06c5-4d64-aad8-8e016001cd47.png)
+
 ### Introduction
 A window 98 project done by React.
 
