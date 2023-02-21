@@ -457,12 +457,6 @@ function MainWindow(props) {
         setCrtOn={props.setCrtOn}
         openSubWindow={props.openSubWindow}
         setOpenSubWindow={props.setOpenSubWindow}
-        openProgramsList={props.openProgramsList}
-        setOpenProgramsList={props.setOpenProgramsList}
-        isProgActive={props.isProgActive}
-        setIsProgActive={props.setIsProgActive}
-        currentOpenProgramObj={props.currentOpenProgramObj}
-        setCurrentOpenProgramObj={props.setCurrentOpenProgramObj}
       />
     </>
   );

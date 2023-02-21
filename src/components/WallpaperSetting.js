@@ -107,15 +107,19 @@ export default function WallpaperSetting(props) {
                 className={
                   props.wallpaperList.wall1 ? "wallpaper_selected" : ""
                 }
-                onClick={() =>
-                  props.setWallpaperList({
-                    wall1: true,
-                    wall2: false,
-                    wall3: false,
-                    wall4: false,
-                    wall5: false,
-                  })
-                }
+                onClick={() => {
+                  const keys = Object.keys(props.wallpaperList);
+                  props.setWallpaperList((prev) => {
+                    let newObj = {};
+                    for (let i = 0; i < keys.length; i++) {
+                      const key = keys[i];
+                      const value = props.wallpaperList[key];
+                      if (key === "wall1") newObj[key] = true;
+                      else newObj[key] = false;
+                    }
+                    return newObj;
+                  });
+                }}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -127,15 +131,19 @@ export default function WallpaperSetting(props) {
                 className={
                   props.wallpaperList.wall2 ? "wallpaper_selected" : ""
                 }
-                onClick={() =>
-                  props.setWallpaperList({
-                    wall2: true,
-                    wall1: false,
-                    wall3: false,
-                    wall4: false,
-                    wall5: false,
-                  })
-                }
+                onClick={() => {
+                  const keys = Object.keys(props.wallpaperList);
+                  props.setWallpaperList((prev) => {
+                    let newObj = {};
+                    for (let i = 0; i < keys.length; i++) {
+                      const key = keys[i];
+                      const value = props.wallpaperList[key];
+                      if (key === "wall2") newObj[key] = true;
+                      else newObj[key] = false;
+                    }
+                    return newObj;
+                  });
+                }}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -147,15 +155,19 @@ export default function WallpaperSetting(props) {
                 className={
                   props.wallpaperList.wall3 ? "wallpaper_selected" : ""
                 }
-                onClick={() =>
-                  props.setWallpaperList({
-                    wall3: true,
-                    wall1: false,
-                    wall2: false,
-                    wall4: false,
-                    wall5: false,
-                  })
-                }
+                onClick={() => {
+                  const keys = Object.keys(props.wallpaperList);
+                  props.setWallpaperList((prev) => {
+                    let newObj = {};
+                    for (let i = 0; i < keys.length; i++) {
+                      const key = keys[i];
+                      const value = props.wallpaperList[key];
+                      if (key === "wall3") newObj[key] = true;
+                      else newObj[key] = false;
+                    }
+                    return newObj;
+                  });
+                }}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -167,15 +179,19 @@ export default function WallpaperSetting(props) {
                 className={
                   props.wallpaperList.wall4 ? "wallpaper_selected" : ""
                 }
-                onClick={() =>
-                  props.setWallpaperList({
-                    wall4: true,
-                    wall1: false,
-                    wall2: false,
-                    wall3: false,
-                    wall5: false,
-                  })
-                }
+                onClick={() => {
+                  const keys = Object.keys(props.wallpaperList);
+                  props.setWallpaperList((prev) => {
+                    let newObj = {};
+                    for (let i = 0; i < keys.length; i++) {
+                      const key = keys[i];
+                      const value = props.wallpaperList[key];
+                      if (key === "wall4") newObj[key] = true;
+                      else newObj[key] = false;
+                    }
+                    return newObj;
+                  });
+                }}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -187,15 +203,19 @@ export default function WallpaperSetting(props) {
                 className={
                   props.wallpaperList.wall5 ? "wallpaper_selected" : ""
                 }
-                onClick={() =>
-                  props.setWallpaperList({
-                    wall5: true,
-                    wall1: false,
-                    wall2: false,
-                    wall3: false,
-                    wall4: false,
-                  })
-                }
+                onClick={() => {
+                  const keys = Object.keys(props.wallpaperList);
+                  props.setWallpaperList((prev) => {
+                    let newObj = {};
+                    for (let i = 0; i < keys.length; i++) {
+                      const key = keys[i];
+                      const value = props.wallpaperList[key];
+                      if (key === "wall5") newObj[key] = true;
+                      else newObj[key] = false;
+                    }
+                    return newObj;
+                  });
+                }}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
