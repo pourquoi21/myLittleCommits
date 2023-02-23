@@ -519,3 +519,16 @@ h4 > span {
   width: 100%;
   height: 100%;
 }
+
+.shutdown_content,
+.shutdown_content label {
+  font-size: 12px;
+}
+
+.shutdown_button button {
+  width: 100px;
+  height: 25px;
+  font-size: 12px;
+  box-sizing: border-box;
+  /* border: 2px solid transparent; */
+}

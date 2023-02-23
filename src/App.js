@@ -9,6 +9,7 @@ import wallpaper1 from "./images/wallpaper1.jpg";
 import wallpaper2 from "./images/wallpaper2.jpg";
 import wallpaper3 from "./images/wallpaper3.jpg";
 import wallpaper4 from "./images/wallpaper4.jpg";
+import SystemShutDown from "./components/SystemShutDown";
 
 function App() {
   // Start Contents is on / off, when background is clicked it goes off
@@ -126,6 +127,7 @@ function App() {
         // openProgramsList={openProgramsList}
         // setOpenProgramsList={setOpenProgramsList}
       />
+      {/* <SystemShutDown /> */}
     </div>
   );
 }

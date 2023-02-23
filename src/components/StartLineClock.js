@@ -17,7 +17,7 @@ export default function StartLineClock() {
   React.useEffect(() => {
     const id = setInterval(() => {
       setTime(new Date());
-    }, 3000);
+    }, 30000);
     return () => clearInterval(id);
   }, []);
 
