@@ -10,8 +10,13 @@ import wallpaper2 from "./images/wallpaper2.jpg";
 import wallpaper3 from "./images/wallpaper3.jpg";
 import wallpaper4 from "./images/wallpaper4.jpg";
 import SystemShutDown from "./components/SystemShutDown";
+import { useDispatch, useSelector } from "react-redux";
+import { startMenu } from "./modules/startmenu";
 
 function App() {
+  const { changeMenu } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   // Start Contents is on / off, when background is clicked it goes off
   const [startMenuOn, setStartMenuOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
@@ -20,6 +25,7 @@ function App() {
     "바탕화면 설정": false,
     문서: false,
   });
+  const [shutDown, setShutDown] = React.useState(false);
   // const [isProgActive, setIsProgActive] = React.useState({
   //   "바탕화면 설정": false,
   //   문서: false,
@@ -51,6 +57,8 @@ function App() {
   else if (wallpaperList.wall4) sampleImage = wallpaper4;
   else sampleImage = null;
 
+  const startMenuOnOff = () => dispatch(startMenu());
+
   return (
     <div
       className="App"
@@ -76,7 +84,12 @@ function App() {
           top: 0,
           left: 0,
         }}
-        onClick={() => setStartMenuOn(false)}
+        onClick={
+          // () => {
+          // setStartMenuOn(false);
+          startMenuOnOff
+          // }
+        }
       />
       {(openSubWindow.문서 || openSubWindow.문서 == "active") && (
         <DocumentMenu
