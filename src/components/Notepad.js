@@ -183,7 +183,7 @@ export default function Notepad(props) {
             }}
           >
             <li
-              className={noteMenu && "menu_selected"}
+              className={noteMenu ? "menu_selected" : null}
               onClick={() => setNoteMenu((prev) => !prev)}
             >
               파일(F)

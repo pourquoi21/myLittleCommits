@@ -24,7 +24,11 @@ function StartDetails2(props) {
       >
         <ul
           className="StartDetails-ul"
-          onClick={() => props.setStartMenuOn(false)}
+          onClick={() => {
+            props.setOnAndOff((prev) => {
+              return { ...prev, startMenu: false };
+            });
+          }}
         >
           <li
             onClick={() => {
@@ -34,7 +38,7 @@ function StartDetails2(props) {
                 for (let i = 0; i < keys.length; i++) {
                   const key = keys[i];
                   const value = props.openSubWindow[key];
-                  if (value === true || value === "active") newObj[key] = true;
+                  if (value || value === "active") newObj[key] = true;
                   else newObj[key] = false;
                 }
                 // wallpaperSetting: false,
@@ -49,17 +53,24 @@ function StartDetails2(props) {
             <img
               src={require(`../../src/images/windows-wall.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
+              onClick={(event) => event.stopPropagation()}
             />
             <span>바탕화면 설정</span>
             {/* <div className="startDetail-arrow">▶</div> */}
           </li>
-          <li onClick={() => props.setCrtOn((prev) => !prev)}>
+          <li
+            onClick={() => {
+              props.setOnAndOff((prev) => {
+                return { ...prev, crt: !prev.crt };
+              });
+            }}
+          >
             {/* {isMouseOn.Deep2 && <StartDeepDetail2 />} */}
             <img
               src={require(`../../src/images/windows-monitor.png`)}
               style={{ width: "16px", margin: "0 5px 0 3px" }}
             />
-            <span>CRT효과 {props.crtOn ? "끄기" : "켜기"}...</span>
+            <span>CRT효과 {props.onAndOff.crt ? "끄기" : "켜기"}...</span>
             {/* <div className="startDetail-arrow">▶</div> */}
           </li>
         </ul>

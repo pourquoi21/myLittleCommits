@@ -10,14 +10,17 @@ import wallpaper2 from "./images/wallpaper2.jpg";
 import wallpaper3 from "./images/wallpaper3.jpg";
 import wallpaper4 from "./images/wallpaper4.jpg";
 import SystemShutDown from "./components/SystemShutDown";
-import { useDispatch, useSelector } from "react-redux";
-import { startMenu } from "./modules/startmenu";
+import CounterContainer from "./containers/CounterContainer";
+import MainWindowContainer from "./containers/MainWindowContainer";
 
 function App() {
-  const { changeMenu } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   // Start Contents is on / off, when background is clicked it goes off
+  const [onAndOff, setOnAndOff] = React.useState({
+    startMenu: false,
+    crt: true,
+    shutDown: false,
+  });
+
   const [startMenuOn, setStartMenuOn] = React.useState(false);
   const [crtOn, setCrtOn] = React.useState(true);
   const [openSubWindow, setOpenSubWindow] = React.useState({
@@ -57,8 +60,6 @@ function App() {
   else if (wallpaperList.wall4) sampleImage = wallpaper4;
   else sampleImage = null;
 
-  const startMenuOnOff = () => dispatch(startMenu());
-
   return (
     <div
       className="App"
@@ -76,7 +77,7 @@ function App() {
       }}
     >
       <div
-        className={`crt ${crtOn ? "null" : "none"}`}
+        className={`crt ${onAndOff.crt ? "null" : "none"}`}
         style={{
           height: "100vh",
           width: "100vw",
@@ -84,12 +85,15 @@ function App() {
           top: 0,
           left: 0,
         }}
-        onClick={
-          // () => {
-          // setStartMenuOn(false);
-          startMenuOnOff
-          // }
-        }
+        onClick={() => {
+          setStartMenuOn(false);
+          setOnAndOff((prev) => {
+            return {
+              ...prev,
+              startMenu: false,
+            };
+          });
+        }}
       />
       {(openSubWindow.문서 || openSubWindow.문서 == "active") && (
         <DocumentMenu
@@ -103,7 +107,7 @@ function App() {
       {openSubWindow["바탕화면 설정"] ||
       openSubWindow["바탕화면 설정"] == "active" ? (
         <WallpaperSetting
-          setStartMenuOn={setStartMenuOn}
+          setOnAndOff={setOnAndOff}
           openSubWindow={openSubWindow}
           setOpenSubWindow={setOpenSubWindow}
           wallpaperList={wallpaperList}
@@ -123,22 +127,13 @@ function App() {
           setOpenSubWindow={setOpenSubWindow}
         />
       )}
-
+      {/* <MainWindowContainer /> */}
       <MainWindow
-        startMenuOn={startMenuOn}
-        setStartMenuOn={setStartMenuOn}
-        crtOn={crtOn}
-        setCrtOn={setCrtOn}
+        onAndOff={onAndOff}
+        setOnAndOff={setOnAndOff}
         openSubWindow={openSubWindow}
         setOpenSubWindow={setOpenSubWindow}
         changeWall={changeWall}
-        // isProgActive={isProgActive}
-        // setIsProgActive={setIsProgActive}
-        // currentOpenProgramObj={currentOpenProgramObj}
-        // setCurrentOpenProgramObj={setCurrentOpenProgramObj}
-
-        // openProgramsList={openProgramsList}
-        // setOpenProgramsList={setOpenProgramsList}
       />
       {/* <SystemShutDown /> */}
     </div>

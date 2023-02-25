@@ -83,7 +83,7 @@ function StartDetails1(props) {
             <span>HTML & CSS</span>
             <div className="startDetail-arrow">▶</div>
             {isMouseOn.Deep1 && (
-              <StartDeepDetail1 setStartMenuOn={props.setStartMenuOn} />
+              <StartDeepDetail1 setOnAndOff={props.setOnAndOff} />
             )}
           </li>
           <li
@@ -105,7 +105,7 @@ function StartDetails1(props) {
             <span>JavaScript</span>
             <div className="startDetail-arrow">▶</div>
             {isMouseOn.Deep2 && (
-              <StartDeepDetail2 setStartMenuOn={props.setStartMenuOn} />
+              <StartDeepDetail2 setOnAndOff={props.setOnAndOff} />
             )}
           </li>
           <li
@@ -127,7 +127,7 @@ function StartDetails1(props) {
             <span>React</span>
             <div className="startDetail-arrow">▶</div>
             {isMouseOn.Deep3 && (
-              <StartDeepDetail3 setStartMenuOn={props.setStartMenuOn} />
+              <StartDeepDetail3 setOnAndOff={props.setOnAndOff} />
             )}
           </li>
           <li

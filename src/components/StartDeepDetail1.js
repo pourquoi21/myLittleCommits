@@ -24,7 +24,11 @@ export default function StartDeepDetail1(props) {
       >
         <ul
           className="StartDeepDetail-ul"
-          onClick={() => props.setStartMenuOn(false)}
+          onClick={() => {
+            props.setOnAndOff((prev) => {
+              return { ...prev, startMenu: false };
+            });
+          }}
         >
           <li>
             <img

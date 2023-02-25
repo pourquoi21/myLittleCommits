@@ -5,7 +5,18 @@ import StartDetails1 from "./StartDetails1";
 import StartDetails2 from "./StartDetails2";
 import StartLineClock from "./StartLineClock";
 
-function MainWindow(props) {
+function MainWindow2({
+  onSetStart,
+  onSetCrt,
+  onSetShut,
+  startMenuOn,
+  setStartMenuOn,
+  crtOn,
+  setCrtOn,
+  openSubWindow,
+  setOpenSubWindow,
+  changeWall,
+}) {
   function StartContent(props) {
     const [isSubOn, setIsSubOn] = React.useState({
       Detail1: false,
@@ -79,11 +90,10 @@ function MainWindow(props) {
               <span>프로그램(P)</span>
               <div className="startContent-arrow">▶</div>
               {isSubOn.Detail1 && (
-                <StartDetails1 setOnAndOff={props.setOnAndOff} />
+                <StartDetails1 setStartMenuOn={props.setStartMenuOn} />
               )}
             </li>
             <li
-              id="문서"
               style={{ cursor: "pointer" }}
               onMouseOver={() =>
                 setIsSubOn({
@@ -91,20 +101,27 @@ function MainWindow(props) {
                   Detail2: false,
                 })
               }
-              onClick={(event) => {
-                props.isProgClicked(event);
-                props.setOnAndOff((prev) => {
-                  return { ...prev, startMenu: !prev.startMenu };
+              onClick={() => {
+                const keys = Object.keys(props.openSubWindow);
+                props.setOpenSubWindow((prev) => {
+                  let newObj = {};
+                  for (let i = 0; i < keys.length; i++) {
+                    const key = keys[i];
+                    const value = props.openSubWindow[key];
+                    if (value === true || value === "active")
+                      newObj[key] = true;
+                    else newObj[key] = false;
+                  }
+
+                  return { ...newObj, 문서: "active" };
                 });
               }}
             >
               <img
                 src={require(`../../src/images/windows-docs.png`)}
                 style={{ width: "35px" }}
-                onClick={(event) => event.stopPropagation()}
               />
               <span>문서(D)</span>
-              {/* <div className="startContent-arrow">▶</div> */}
             </li>
             <li
               style={{ position: "relative" }}
@@ -123,10 +140,12 @@ function MainWindow(props) {
               <div className="startContent-arrow">▶</div>
               {isSubOn.Detail2 && (
                 <StartDetails2
-                  onAndOff={props.onAndOff}
-                  setOnAndOff={props.setOnAndOff}
+                  setCrtOn={props.setCrtOn}
+                  crtOn={props.crtOn}
+                  setStartMenuOn={props.setStartMenuOn}
                   openSubWindow={props.openSubWindow}
                   setOpenSubWindow={props.setOpenSubWindow}
+                  setOpenProgramsList={props.setOpenProgramsList}
                 />
               )}
             </li>
@@ -166,33 +185,27 @@ function MainWindow(props) {
           if (value || value === "active") newObj[key] = true;
           else newObj[key] = false;
         }
-        // console.log(newObj);
-        // console.log(currentOpenProgramObj);
+
         return { ...newObj, [id]: "active" };
       });
-      // console.log(event.target.id);
     }
-    // console.log(props.currentOpenProgramObj);
 
     // 열린 프로그램만 시작표시줄에 나타내기
     // 처음 정해진 openSubWindow의 차례에 종속적이지 않게 만들어야하는데..
     // newObj에 넣어주는 key:value값이 openSubWindow로부터 온거라..
-    function openProgramList() {
-      const keys = Object.keys(props.openSubWindow);
-      let newObj = {};
+    // function openProgramList() {
+    //   const keys = Object.keys(props.openSubWindow);
 
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        const value = props.openSubWindow[key];
-        // console.log("when we are mapping this", newObj);
-        if (value || value === "active") newObj = { ...newObj, [key]: value };
-        else newObj = { ...newObj };
-      }
-      // console.log(newObj);
-      return newObj;
-    }
+    //   for (let i = 0; i < keys.length; i++) {
+    //     let newObj = {};
+    //     const key = keys[i];
+    //     const value = props.openSubWindow[key];
+    //     if (value || value === "active") newObj = { ...newObj, [key]: value };
+    //     else newObj = { ...newObj };
+    //   }
 
-    // console.log(currentOpenProgramList);
+    //   return newObj;
+    // }
 
     return (
       <div
@@ -209,15 +222,15 @@ function MainWindow(props) {
           zIndex: "3",
         }}
         className="window"
-        // onMouseLeave={onMouseLeave}
       >
-        {props.onAndOff.startMenu && (
+        {onSetStart === true && (
           <StartContent
-            onAndOff={props.onAndOff}
-            setOnAndOff={props.setOnAndOff}
+            setCrtOn={props.setCrtOn}
+            crtOn={props.crtOn}
+            setStartMenuOn={props.setStartMenuOn}
             openSubWindow={props.openSubWindow}
             setOpenSubWindow={props.setOpenSubWindow}
-            isProgClicked={isProgClicked}
+            setOpenProgramsList={props.setOpenProgramsList}
           />
         )}
         <div
@@ -228,6 +241,7 @@ function MainWindow(props) {
             display: "flex",
             alignItems: "center",
           }}
+          onClick={onSetStart}
         >
           <button
             style={{
@@ -251,40 +265,12 @@ function MainWindow(props) {
                 letterSpacing: "0.5px",
                 fontFamily: "Noto Sans KR",
               }}
-              onClick={() => {
-                props.setOnAndOff((prev) => {
-                  return { ...prev, startMenu: !prev.startMenu };
-                });
-              }}
             >
               시작
             </div>
           </button>
-          {/* {currentOpenProgramList.map((program, index) => (
-            <div
-              onClick={(event) => isProgClicked(event)}
-              id={program}
-              className="startLineList"
-              key={index}
-              style={{
-                width: "180px",
-                height: "32px",
-                padding: "0 5px",
-                marginLeft: "1.5px",
-                marginRight: "1.5px",
-                boxSizing: "border-box",
-                background: "#c4c4c4",
-                display: "flex",
-                alignItems: "center",
-                textAlign: "center",
-                fontSize: "15px",
-                borderLeft: "2px solid rgba(255,255,255,0.8)",
-                borderTop: "2px solid rgba(255,255,255,0.8)",
-                borderRight: "2px solid rgba(0,0,0,0.5)",
-                borderBottom: "2px solid rgba(0,0,0,0.5)",
-              }}
-            > */}
-          {Object.entries(openProgramList()).map((program) => (
+
+          {/* {Object.entries(openProgramList()).map((program) => (
             <div
               onClick={(event) => isProgClicked(event)}
               id={program[0]}
@@ -310,7 +296,7 @@ function MainWindow(props) {
               />
               {program[0]}
             </div>
-          ))}
+          ))} */}
 
           <StartLineClock />
         </div>
@@ -318,24 +304,6 @@ function MainWindow(props) {
     );
   }
 
-  // function FirstAlert() {
-  //   return (
-  //     <div style={{ width: 300 }} className="window">
-  //       <div className="title-bar">
-  //         <div className="title-bar-text">A wild alert!</div>
-  //       </div>
-
-  //       <div className="window-body">
-  //         <p style={{ textAlign: "center" }}>입장하시겠습니까?</p>
-  //         <div className="field-row" style={{ justifyContent: "center" }}>
-  //           <button>Yes</button>
-  //           <button>네</button>
-  //           <button disabled>아니오</button>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
   const [isIconClicked, setIsIconClicked] = React.useState({
     bin: false,
     memo: false,
@@ -344,7 +312,6 @@ function MainWindow(props) {
   function handleIconClick(event) {
     const { name } = event.target;
     const keys = Object.keys(isIconClicked);
-    // console.log(event.target.name);
 
     setIsIconClicked((prev) => {
       let newArray = {};
@@ -354,13 +321,8 @@ function MainWindow(props) {
         newArray[key] = false;
       }
       return { ...newArray, [name]: true };
-      //   return {
-      //     ...prev,
-      //     [name]: true,
-      //   };
     });
   }
-  //   console.log(isIconClicked);
 
   return (
     <>
@@ -369,7 +331,7 @@ function MainWindow(props) {
           height: "100%",
           width: "100%",
           backgroundColor: "#008080",
-          backgroundImage: `URL(${props.changeWall})`,
+          backgroundImage: `URL(${changeWall})`,
           backgroundSize: "cover",
           padding: "2vh 2vw",
           boxSizing: "border-box",
@@ -378,14 +340,7 @@ function MainWindow(props) {
           justifyContent: "flex-start",
           // alignItems: "center",
         }}
-        onClick={() => {
-          props.setOnAndOff((prev) => {
-            return {
-              ...prev,
-              startMenu: false,
-            };
-          });
-        }}
+        onClick={() => setStartMenuOn(false)}
       >
         <div
           className="icon-line"
@@ -430,12 +385,12 @@ function MainWindow(props) {
                 marginLeft: "-10px",
               }}
               onDoubleClick={() => {
-                const keys = Object.keys(props.openSubWindow);
-                props.setOpenSubWindow((prev) => {
+                const keys = Object.keys(openSubWindow);
+                setOpenSubWindow((prev) => {
                   let newObj = {};
                   for (let i = 0; i < keys.length; i++) {
                     const key = keys[i];
-                    const value = props.openSubWindow[key];
+                    const value = openSubWindow[key];
                     if (value || value === "active") newObj[key] = true;
                     else newObj[key] = false;
                   }
@@ -449,15 +404,17 @@ function MainWindow(props) {
           </div>
         </div>
       </div>
-      {/* <FirstAlert /> */}
+
       <StartLine
-        onAndOff={props.onAndOff}
-        setOnAndOff={props.setOnAndOff}
-        openSubWindow={props.openSubWindow}
-        setOpenSubWindow={props.setOpenSubWindow}
+        startMenuOn={startMenuOn}
+        setStartMenuOn={setStartMenuOn}
+        crtOn={crtOn}
+        setCrtOn={setCrtOn}
+        openSubWindow={openSubWindow}
+        setOpenSubWindow={setOpenSubWindow}
       />
     </>
   );
 }
 
-export default React.memo(MainWindow);
+export default React.memo(MainWindow2);

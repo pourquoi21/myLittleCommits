@@ -7,6 +7,22 @@ export default function WallpaperSetting(props) {
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
   };
+
+  const handleListCliked = (event) => {
+    const { id } = event.target;
+    const keys = Object.keys(props.wallpaperList);
+    props.setWallpaperList((prev) => {
+      let newObj = {};
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const value = props.wallpaperList[key];
+        if (key === id) newObj[key] = true;
+        else newObj[key] = false;
+      }
+      return newObj;
+    });
+  };
+
   return (
     <Draggable onDrag={(e, data) => trackPos(data)} handle="strong">
       <div
@@ -35,7 +51,9 @@ export default function WallpaperSetting(props) {
             // wallpaperSetting: false,
             return { ...newObj, "바탕화면 설정": "active" };
           });
-          props.setStartMenuOn(false);
+          props.setOnAndOff((prev) => {
+            return { ...prev, startMenu: false };
+          });
         }}
       >
         <strong className="cursor">
@@ -104,22 +122,11 @@ export default function WallpaperSetting(props) {
             <legend>바탕화면 설정</legend>
             <ul className="tree-view wallpaper_ul">
               <li
+                id="wall1"
                 className={
                   props.wallpaperList.wall1 ? "wallpaper_selected" : ""
                 }
-                onClick={() => {
-                  const keys = Object.keys(props.wallpaperList);
-                  props.setWallpaperList((prev) => {
-                    let newObj = {};
-                    for (let i = 0; i < keys.length; i++) {
-                      const key = keys[i];
-                      const value = props.wallpaperList[key];
-                      if (key === "wall1") newObj[key] = true;
-                      else newObj[key] = false;
-                    }
-                    return newObj;
-                  });
-                }}
+                onClick={(event) => handleListCliked(event)}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -128,22 +135,11 @@ export default function WallpaperSetting(props) {
                 윈도우 98
               </li>
               <li
+                id="wall2"
                 className={
                   props.wallpaperList.wall2 ? "wallpaper_selected" : ""
                 }
-                onClick={() => {
-                  const keys = Object.keys(props.wallpaperList);
-                  props.setWallpaperList((prev) => {
-                    let newObj = {};
-                    for (let i = 0; i < keys.length; i++) {
-                      const key = keys[i];
-                      const value = props.wallpaperList[key];
-                      if (key === "wall2") newObj[key] = true;
-                      else newObj[key] = false;
-                    }
-                    return newObj;
-                  });
-                }}
+                onClick={(event) => handleListCliked(event)}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -152,22 +148,11 @@ export default function WallpaperSetting(props) {
                 윈도우 98(Blue Theme)
               </li>
               <li
+                id="wall3"
                 className={
                   props.wallpaperList.wall3 ? "wallpaper_selected" : ""
                 }
-                onClick={() => {
-                  const keys = Object.keys(props.wallpaperList);
-                  props.setWallpaperList((prev) => {
-                    let newObj = {};
-                    for (let i = 0; i < keys.length; i++) {
-                      const key = keys[i];
-                      const value = props.wallpaperList[key];
-                      if (key === "wall3") newObj[key] = true;
-                      else newObj[key] = false;
-                    }
-                    return newObj;
-                  });
-                }}
+                onClick={(event) => handleListCliked(event)}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -176,22 +161,11 @@ export default function WallpaperSetting(props) {
                 숲
               </li>
               <li
+                id="wall4"
                 className={
                   props.wallpaperList.wall4 ? "wallpaper_selected" : ""
                 }
-                onClick={() => {
-                  const keys = Object.keys(props.wallpaperList);
-                  props.setWallpaperList((prev) => {
-                    let newObj = {};
-                    for (let i = 0; i < keys.length; i++) {
-                      const key = keys[i];
-                      const value = props.wallpaperList[key];
-                      if (key === "wall4") newObj[key] = true;
-                      else newObj[key] = false;
-                    }
-                    return newObj;
-                  });
-                }}
+                onClick={(event) => handleListCliked(event)}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
@@ -200,22 +174,11 @@ export default function WallpaperSetting(props) {
                 구름
               </li>
               <li
+                id="wall5"
                 className={
                   props.wallpaperList.wall5 ? "wallpaper_selected" : ""
                 }
-                onClick={() => {
-                  const keys = Object.keys(props.wallpaperList);
-                  props.setWallpaperList((prev) => {
-                    let newObj = {};
-                    for (let i = 0; i < keys.length; i++) {
-                      const key = keys[i];
-                      const value = props.wallpaperList[key];
-                      if (key === "wall5") newObj[key] = true;
-                      else newObj[key] = false;
-                    }
-                    return newObj;
-                  });
-                }}
+                onClick={(event) => handleListCliked(event)}
               >
                 <img
                   src={require(`../images/windows-paint.png`)}
