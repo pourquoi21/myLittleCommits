@@ -16,7 +16,10 @@ export default function SystemShutDown() {
         flexWrap: "wrap",
       }}
     >
-      <div className="window" style={{ width: "450px" }}>
+      <div
+        className="window"
+        style={{ width: "450px", height: "230px", boxSizing: "border-box" }}
+      >
         <div className="title-bar">
           <div className="title-bar-text">시스템 종료...</div>
           <div className="title-bar-controls">

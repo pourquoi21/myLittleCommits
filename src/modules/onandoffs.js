@@ -12,7 +12,7 @@ const initialState = {
   shut: false,
 };
 
-console.log(initialState);
+// console.log(initialState);
 
 export default function onandoffs(state = initialState, action) {
   switch (action.type) {

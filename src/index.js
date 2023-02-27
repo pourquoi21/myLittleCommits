@@ -9,7 +9,7 @@ import rootReducer from "./modules";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = createStore(rootReducer);
-console.log(store.getState());
+// console.log(store.getState());
 root.render(
   <Provider store={store}>
     <App />

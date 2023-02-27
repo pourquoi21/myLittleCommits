@@ -138,6 +138,11 @@ function MainWindow(props) {
                   Document: false,
                 })
               }
+              onClick={() => {
+                props.setOnAndOff((prev) => {
+                  return { ...prev, shutDown: true, startMenu: false };
+                });
+              }}
             >
               <img
                 src={require(`../../src/images/windows-shutdown.png`)}

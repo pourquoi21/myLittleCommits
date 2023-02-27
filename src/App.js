@@ -135,7 +135,7 @@ function App() {
         setOpenSubWindow={setOpenSubWindow}
         changeWall={changeWall}
       />
-      {/* <SystemShutDown /> */}
+      {onAndOff.shutDown && <SystemShutDown />}
     </div>
   );
 }

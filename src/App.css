@@ -532,3 +532,7 @@ h4 > span {
   box-sizing: border-box;
   /* border: 2px solid transparent; */
 }
+
+.shutdown_button button:clicked {
+  border: 0;
+}
