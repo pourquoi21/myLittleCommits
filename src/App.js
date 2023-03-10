@@ -20,9 +20,9 @@ function App() {
     crt: true,
     shutDown: false,
   });
-
-  const [startMenuOn, setStartMenuOn] = React.useState(false);
-  const [crtOn, setCrtOn] = React.useState(true);
+  console.log(onAndOff);
+  // const [startMenuOn, setStartMenuOn] = React.useState(false);
+  // const [crtOn, setCrtOn] = React.useState(true);
   const [openSubWindow, setOpenSubWindow] = React.useState({
     메모장: false,
     "바탕화면 설정": false,
@@ -86,7 +86,7 @@ function App() {
           left: 0,
         }}
         onClick={() => {
-          setStartMenuOn(false);
+          // setStartMenuOn(false);
           setOnAndOff((prev) => {
             return {
               ...prev,
@@ -97,11 +97,9 @@ function App() {
       />
       {(openSubWindow.문서 || openSubWindow.문서 == "active") && (
         <DocumentMenu
-          setStartMenuOn={setStartMenuOn}
+          setOnAndOff={setOnAndOff}
           openSubWindow={openSubWindow}
           setOpenSubWindow={setOpenSubWindow}
-          // setIsProgActive={setIsProgActive}
-          // currentOpenProgramObj={currentOpenProgramObj}
         />
       )}
       {openSubWindow["바탕화면 설정"] ||
@@ -114,9 +112,6 @@ function App() {
           setWallpaperList={setWallpaperList}
           sampleImage={sampleImage}
           setChangeWall={setChangeWall}
-          // setIsProgActive={setIsProgActive}
-          // currentOpenProgramObj={currentOpenProgramObj}
-          // setOpenProgramsList={setOpenProgramsList}
         />
       ) : (
         ""
@@ -135,7 +130,7 @@ function App() {
         setOpenSubWindow={setOpenSubWindow}
         changeWall={changeWall}
       />
-      {onAndOff.shutDown && <SystemShutDown />}
+      {onAndOff.shutDown && <SystemShutDown setOnAndOff={setOnAndOff} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SystemShutDown() {
+export default function SystemShutDown(props) {
   return (
     <div
       className="shutdown_shadow"
@@ -23,7 +23,15 @@ export default function SystemShutDown() {
         <div className="title-bar">
           <div className="title-bar-text">시스템 종료...</div>
           <div className="title-bar-controls">
-            <button aria-label="Close"></button>
+            <button
+              // onClick={props.setOnAndOff((prev) => {
+              //   return {
+              //     ...prev,
+              //     shutDown: false,
+              //   };
+              // })}
+              aria-label="Close"
+            ></button>
           </div>
         </div>
         <div
@@ -86,7 +94,16 @@ export default function SystemShutDown() {
             style={{ margin: "25px auto 0 auto", boxSizing: "border-box" }}
           >
             <button style={{ marginRight: "20px" }}>확인</button>
-            <button>취소</button>
+            <button
+            // onClick={props.setOnAndOff((prev) => {
+            //   return {
+            //     ...prev,
+            //     shutDown: false,
+            //   };
+            // })}
+            >
+              취소
+            </button>
           </div>
         </div>
       </div>

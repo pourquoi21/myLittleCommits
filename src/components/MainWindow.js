@@ -103,7 +103,7 @@ function MainWindow(props) {
                 style={{ width: "35px" }}
                 onClick={(event) => event.stopPropagation()}
               />
-              <span>문서(D)</span>
+              <span onClick={(event) => event.stopPropagation()}>문서(D)</span>
               {/* <div className="startContent-arrow">▶</div> */}
             </li>
             <li

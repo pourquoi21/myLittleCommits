@@ -36,7 +36,7 @@ export default function DocumentMenu(props) {
             // wallpaperSetting: false,
             return { ...newObj, 문서: "active" };
           });
-          props.setStartMenuOn(false);
+          props.setOnAndOff((prev) => ({ ...prev, startMenu: false }));
         }}
       >
         <strong className="cursor">
