@@ -24,12 +24,7 @@ export default function SystemShutDown(props) {
           <div className="title-bar-text">시스템 종료...</div>
           <div className="title-bar-controls">
             <button
-              // onClick={props.setOnAndOff((prev) => {
-              //   return {
-              //     ...prev,
-              //     shutDown: false,
-              //   };
-              // })}
+              onClick={props.setShutDown(false)}
               aria-label="Close"
             ></button>
           </div>
@@ -94,16 +89,7 @@ export default function SystemShutDown(props) {
             style={{ margin: "25px auto 0 auto", boxSizing: "border-box" }}
           >
             <button style={{ marginRight: "20px" }}>확인</button>
-            <button
-            // onClick={props.setOnAndOff((prev) => {
-            //   return {
-            //     ...prev,
-            //     shutDown: false,
-            //   };
-            // })}
-            >
-              취소
-            </button>
+            <button onClick={props.setShutDown(false)}>취소</button>
           </div>
         </div>
       </div>

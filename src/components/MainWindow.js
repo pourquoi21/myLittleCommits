@@ -4,6 +4,7 @@ import WindowBar from "../images/windows-bar.png";
 import StartDetails1 from "./StartDetails1";
 import StartDetails2 from "./StartDetails2";
 import StartLineClock from "./StartLineClock";
+import SystemShutDown from "./SystemShutDown";
 
 function MainWindow(props) {
   function StartContent(props) {
@@ -139,8 +140,9 @@ function MainWindow(props) {
                 })
               }
               onClick={() => {
+                props.setShutDown(true);
                 props.setOnAndOff((prev) => {
-                  return { ...prev, shutDown: true, startMenu: false };
+                  return { ...prev, startMenu: false };
                 });
               }}
             >
@@ -222,7 +224,8 @@ function MainWindow(props) {
             setOnAndOff={props.setOnAndOff}
             openSubWindow={props.openSubWindow}
             setOpenSubWindow={props.setOpenSubWindow}
-            isProgClicked={isProgClicked}
+            // isProgClicked={isProgClicked}
+            setShutDown={props.setShutDown}
           />
         )}
         <div
@@ -460,7 +463,11 @@ function MainWindow(props) {
         setOnAndOff={props.setOnAndOff}
         openSubWindow={props.openSubWindow}
         setOpenSubWindow={props.setOpenSubWindow}
+        setShutDown={props.setShutDown}
       />
+      {/* {props.onAndOff.shutDown && (
+        <SystemShutDown setOnAndOff={props.setOnAndOff} />
+      )} */}
     </>
   );
 }
