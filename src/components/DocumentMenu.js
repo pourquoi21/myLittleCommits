@@ -125,6 +125,9 @@ export default function DocumentMenu(props) {
                 <br />
                 주로 React를 통해 개발을 하고 있으나, TypeScript 외 여타
                 언어에도 관심이 있습니다.
+                <br />
+                정보처리기사 공부를 통해 JAVA와 C의 세계에도 발을 담그고
+                있습니다.
               </p>
             </div>
             <div className="document_projects">
