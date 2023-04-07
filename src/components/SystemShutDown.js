@@ -6,6 +6,10 @@ export default function SystemShutDown(props) {
     // return () => props.setShutDown(false);
   }, []);
 
+  function closeWindow() {
+    props.setShutDown(false);
+  }
+
   return (
     <div
       className="shutdown_shadow"
@@ -23,28 +27,29 @@ export default function SystemShutDown(props) {
     >
       <div
         className="window"
-        style={{ width: "450px", height: "230px", boxSizing: "border-box" }}
+        style={{ width: "450px", height: "220px", boxSizing: "border-box" }}
       >
         <div className="title-bar">
           <div className="title-bar-text">시스템 종료...</div>
           <div className="title-bar-controls">
-            <button
-              onClick={props.setShutDown(false)}
-              aria-label="Close"
-            ></button>
+            <button onClick={closeWindow} aria-label="Close"></button>
           </div>
         </div>
         <div
           className="window-body"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "8px 0 25px 0",
-            boxSizing: "border-box",
-          }}
+          // style={
+          //   {
+          //     display: "flex",
+          //     flexDirection: "column",
+          //     alignItems: "center",
+          //     alignContent: "space-between",
+          //     padding: "0 0 25px 0",
+          //     boxSizing: "border-box",
+          //   }
+          // }
         >
           <div style={{ display: "flex" }}>
-            <div style={{ width: "100px" }}>
+            <div style={{ width: "100px", padding: "0 0 0 10px" }}>
               <img src={require(`../../src/images/windows-shutdown.png`)} />
             </div>
             <div className="shutdown_content">
@@ -89,12 +94,28 @@ export default function SystemShutDown(props) {
               </div>
             </div>
           </div>
+          <div style={{ height: "25px" }}></div>
           <div
             className="shutdown_button"
-            style={{ margin: "25px auto 0 auto", boxSizing: "border-box" }}
+            style={{
+              position: "relative",
+              left: "25%",
+              // margin: "0 auto",
+              // transform: "translateX(-50%)",
+            }}
           >
-            <button style={{ marginRight: "20px" }}>확인</button>
-            <button onClick={props.setShutDown(false)}>취소</button>
+            <button
+              style={{
+                marginRight: "20px",
+                // position: "relative",
+                // float: "left",
+              }}
+            >
+              확인
+            </button>
+            <button style={{ position: "absolute" }} onClick={closeWindow}>
+              취소
+            </button>
           </div>
         </div>
       </div>

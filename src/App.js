@@ -126,7 +126,7 @@ function App() {
     문서: false,
   });
   const [shutDown, setShutDown] = React.useState(false);
-  console.log(shutDown);
+  // console.log(shutDown);
   // const [isProgActive, setIsProgActive] = React.useState({
   //   "바탕화면 설정": false,
   //   문서: false,
