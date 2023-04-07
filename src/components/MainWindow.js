@@ -224,7 +224,7 @@ function MainWindow(props) {
             setOnAndOff={props.setOnAndOff}
             openSubWindow={props.openSubWindow}
             setOpenSubWindow={props.setOpenSubWindow}
-            // isProgClicked={isProgClicked}
+            isProgClicked={isProgClicked}
             setShutDown={props.setShutDown}
           />
         )}
