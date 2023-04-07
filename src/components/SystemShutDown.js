@@ -1,6 +1,11 @@
 import React from "react";
 
 export default function SystemShutDown(props) {
+  React.useEffect(() => {
+    props.setShutDown(true);
+    // return () => props.setShutDown(false);
+  }, []);
+
   return (
     <div
       className="shutdown_shadow"

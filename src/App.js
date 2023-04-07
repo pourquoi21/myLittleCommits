@@ -115,7 +115,7 @@ function App() {
   const [onAndOff, setOnAndOff] = React.useState({
     startMenu: false,
     crt: true,
-    // shutDown: false,
+    shutDown: false,
   });
   // console.log(onAndOff);
   // const [startMenuOn, setStartMenuOn] = React.useState(false);
