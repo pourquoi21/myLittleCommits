@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/myLittleCommits/static/css/main.b6349928.css",
-    "main.js": "/myLittleCommits/static/js/main.54ed2723.js",
+    "main.js": "/myLittleCommits/static/js/main.ac6a6f09.js",
     "static/js/787.69678963.chunk.js": "/myLittleCommits/static/js/787.69678963.chunk.js",
     "static/media/wallpaper3.jpg": "/myLittleCommits/static/media/wallpaper3.f9e038a165e13b38df08.jpg",
     "static/media/wallpaper1.jpg": "/myLittleCommits/static/media/wallpaper1.c5fa155413d2a8e6e5dc.jpg",
@@ -17,11 +17,11 @@
     "static/media/logo.svg": "/myLittleCommits/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/myLittleCommits/index.html",
     "main.b6349928.css.map": "/myLittleCommits/static/css/main.b6349928.css.map",
-    "main.54ed2723.js.map": "/myLittleCommits/static/js/main.54ed2723.js.map",
+    "main.ac6a6f09.js.map": "/myLittleCommits/static/js/main.ac6a6f09.js.map",
     "787.69678963.chunk.js.map": "/myLittleCommits/static/js/787.69678963.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b6349928.css",
-    "static/js/main.54ed2723.js"
+    "static/js/main.ac6a6f09.js"
   ]
 }
