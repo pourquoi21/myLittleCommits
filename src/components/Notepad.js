@@ -74,7 +74,15 @@ export default function Notepad(props) {
               </a>
             </li>
             <hr />
-            <li onClick={() => setNoteMenu(false)}>
+            <li
+              onClick={(event) => {
+                event.stopPropagation();
+                props.setOpenSubWindow((prev) => ({
+                  ...prev,
+                  메모장: false,
+                }));
+              }}
+            >
               <span>끝내기(X)</span>
             </li>
           </ul>
@@ -119,6 +127,7 @@ export default function Notepad(props) {
               <img
                 src={require(`../../src/images/icon-notepad.png`)}
                 style={{ width: "11px" }}
+                alt="notepad_title_image"
               />{" "}
               메모장
             </div>
