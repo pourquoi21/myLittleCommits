@@ -116,6 +116,7 @@ function App() {
     startMenu: false,
     crt: true,
     shutDown: false,
+    shutDownClicked: false,
   });
   // console.log(onAndOff);
   // const [startMenuOn, setStartMenuOn] = React.useState(false);
@@ -229,7 +230,9 @@ function App() {
         changeWall={changeWall}
         setShutDown={setShutDown}
       />
-      {shutDown && <SystemShutDown setShutDown={setShutDown} />}
+      {shutDown && (
+        <SystemShutDown setShutDown={setShutDown} setOnAndOff={setOnAndOff} />
+      )}
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import React from "react";
+import ShutDownPage from "./ShutDownPage";
 
-export default function SystemShutDown(props) {
+function SystemShutDown(props) {
+  const [shutClicked, setShutClicked] = React.useState(false);
+
   React.useEffect(() => {
     props.setShutDown(true);
     // return () => props.setShutDown(false);
@@ -25,6 +28,7 @@ export default function SystemShutDown(props) {
         flexWrap: "wrap",
       }}
     >
+      {/* {shutClicked && <ShutDownPage />} */}
       <div
         className="window"
         style={{ width: "450px", height: "220px", boxSizing: "border-box" }}
@@ -110,6 +114,7 @@ export default function SystemShutDown(props) {
                 // position: "relative",
                 // float: "left",
               }}
+              // onClick={setShutClicked(true)}
             >
               확인
             </button>
@@ -122,3 +127,5 @@ export default function SystemShutDown(props) {
     </div>
   );
 }
+
+export default React.memo(SystemShutDown);
