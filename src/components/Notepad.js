@@ -1,5 +1,6 @@
 import React from "react";
 import Draggable from "react-draggable";
+import { WindowContext } from "../App";
 
 export default function Notepad(props) {
   const [position, setPosition] = React.useState({ x: 0, y: 0 }); // box의 포지션 값
@@ -13,6 +14,8 @@ export default function Notepad(props) {
   const [maximize, setMaximize] = React.useState(false);
   //   console.log(maximize);
   const divRef = React.useRef();
+
+  let sample = React.useContext(WindowContext);
 
   function handleNote(event) {
     const { value } = event.target;
@@ -200,6 +203,7 @@ export default function Notepad(props) {
             <li>편집(E)</li>
             <li>찾기(S)</li>
             <li>도움말(H)</li>
+            {/* <li>{sample[0]}</li> */}
             <div
               style={{ width: "45.5%", height: "22px" }}
               onClick={(event) => {
