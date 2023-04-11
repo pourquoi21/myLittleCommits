@@ -2,15 +2,27 @@ import React from "react";
 import ShutDownPage from "./ShutDownPage";
 
 function SystemShutDown(props) {
-  const [shutClicked, setShutClicked] = React.useState(false);
-
   React.useEffect(() => {
     props.setShutDown(true);
+    props.setOnAndOff((prev) => {
+      return {
+        ...prev,
+      };
+    });
     // return () => props.setShutDown(false);
   }, []);
 
   function closeWindow() {
     props.setShutDown(false);
+  }
+
+  function nowShutDown() {
+    props.setOnAndOff((prev) => {
+      return {
+        ...prev,
+        shutDownClicked: true,
+      };
+    });
   }
 
   return (
@@ -114,7 +126,7 @@ function SystemShutDown(props) {
                 // position: "relative",
                 // float: "left",
               }}
-              // onClick={setShutClicked(true)}
+              onClick={nowShutDown}
             >
               확인
             </button>

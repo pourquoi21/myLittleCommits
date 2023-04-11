@@ -10,8 +10,6 @@ import wallpaper2 from "./images/wallpaper2.jpg";
 import wallpaper3 from "./images/wallpaper3.jpg";
 import wallpaper4 from "./images/wallpaper4.jpg";
 import SystemShutDown from "./components/SystemShutDown";
-import CounterContainer from "./containers/CounterContainer";
-import MainWindowContainer from "./containers/MainWindowContainer";
 export const WindowContext = React.createContext();
 
 function App() {
@@ -119,6 +117,8 @@ function App() {
     shutDown: false,
     shutDownClicked: false,
   });
+
+  // console.log(onAndOff.shutDownClicked);
   // console.log(onAndOff);
   // const [startMenuOn, setStartMenuOn] = React.useState(false);
   // const [crtOn, setCrtOn] = React.useState(true);
@@ -160,85 +160,100 @@ function App() {
   else if (wallpaperList.wall4) sampleImage = wallpaper4;
   else sampleImage = null;
 
-  const [sample, setSample] = React.useState([10, 11, 12]);
+  // const [sample, setSample] = React.useState([10, 11, 12]);
 
   return (
-    <WindowContext.Provider value={sample}>
+    // <WindowContext.Provider value={sample}>
+    <div
+      className="App"
+      style={{
+        position: "relative",
+        margin: 0,
+        padding: 0,
+        boxSizing: "border-box",
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "hidden",
+      }}
+    >
       <div
-        className="App"
+        className={`crt ${onAndOff.crt ? "null" : "none"}`}
         style={{
-          position: "relative",
-          margin: 0,
-          padding: 0,
-          boxSizing: "border-box",
           height: "100vh",
           width: "100vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "hidden",
+          position: "absolute",
+          top: 0,
+          left: 0,
         }}
-      >
+        onClick={() => {
+          // setStartMenuOn(false);
+          setOnAndOff((prev) => {
+            return {
+              ...prev,
+              startMenu: false,
+            };
+          });
+        }}
+      />
+      {onAndOff.shutDownClicked ? null : (
         <div
-          className={`crt ${onAndOff.crt ? "null" : "none"}`}
           style={{
             height: "100vh",
             width: "100vw",
             position: "absolute",
             top: 0,
             left: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          onClick={() => {
-            // setStartMenuOn(false);
-            setOnAndOff((prev) => {
-              return {
-                ...prev,
-                startMenu: false,
-              };
-            });
-          }}
-        />
-        {(openSubWindow.문서 || openSubWindow.문서 == "active") && (
-          <DocumentMenu
+        >
+          {(openSubWindow.문서 || openSubWindow.문서 == "active") && (
+            <DocumentMenu
+              setOnAndOff={setOnAndOff}
+              openSubWindow={openSubWindow}
+              setOpenSubWindow={setOpenSubWindow}
+            />
+          )}
+          {openSubWindow["바탕화면 설정"] ||
+          openSubWindow["바탕화면 설정"] == "active" ? (
+            <WallpaperSetting
+              setOnAndOff={setOnAndOff}
+              openSubWindow={openSubWindow}
+              setOpenSubWindow={setOpenSubWindow}
+              wallpaperList={wallpaperList}
+              setWallpaperList={setWallpaperList}
+              sampleImage={sampleImage}
+              setChangeWall={setChangeWall}
+            />
+          ) : (
+            ""
+          )}
+          {(openSubWindow.메모장 || openSubWindow.메모장 == "active") && (
+            <Notepad
+              openSubWindow={openSubWindow}
+              setOpenSubWindow={setOpenSubWindow}
+            />
+          )}
+          {/* <MainWindowContainer /> */}
+          <MainWindow
+            onAndOff={onAndOff}
             setOnAndOff={setOnAndOff}
             openSubWindow={openSubWindow}
             setOpenSubWindow={setOpenSubWindow}
+            changeWall={changeWall}
+            setShutDown={setShutDown}
           />
-        )}
-        {openSubWindow["바탕화면 설정"] ||
-        openSubWindow["바탕화면 설정"] == "active" ? (
-          <WallpaperSetting
-            setOnAndOff={setOnAndOff}
-            openSubWindow={openSubWindow}
-            setOpenSubWindow={setOpenSubWindow}
-            wallpaperList={wallpaperList}
-            setWallpaperList={setWallpaperList}
-            sampleImage={sampleImage}
-            setChangeWall={setChangeWall}
-          />
-        ) : (
-          ""
-        )}
-        {(openSubWindow.메모장 || openSubWindow.메모장 == "active") && (
-          <Notepad
-            openSubWindow={openSubWindow}
-            setOpenSubWindow={setOpenSubWindow}
-          />
-        )}
-        {/* <MainWindowContainer /> */}
-        <MainWindow
-          onAndOff={onAndOff}
-          setOnAndOff={setOnAndOff}
-          openSubWindow={openSubWindow}
-          setOpenSubWindow={setOpenSubWindow}
-          changeWall={changeWall}
-          setShutDown={setShutDown}
-        />
-        {shutDown && (
-          <SystemShutDown setShutDown={setShutDown} setOnAndOff={setOnAndOff} />
-        )}
-      </div>
-    </WindowContext.Provider>
+        </div>
+      )}
+      {shutDown && onAndOff.shutDownClicked == false && (
+        <SystemShutDown setShutDown={setShutDown} setOnAndOff={setOnAndOff} />
+      )}
+    </div>
+    // </WindowContext.Provider>
   );
 }
 

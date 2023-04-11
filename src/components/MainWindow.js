@@ -142,7 +142,7 @@ function MainWindow(props) {
               onClick={() => {
                 props.setShutDown(true);
                 props.setOnAndOff((prev) => {
-                  return { ...prev, startMenu: false };
+                  return { ...prev, shutDownClicked: false, startMenu: false };
                 });
               }}
             >
