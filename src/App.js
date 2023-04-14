@@ -10,6 +10,7 @@ import wallpaper2 from "./images/wallpaper2.jpg";
 import wallpaper3 from "./images/wallpaper3.jpg";
 import wallpaper4 from "./images/wallpaper4.jpg";
 import SystemShutDown from "./components/SystemShutDown";
+import ShutDownPage from "./components/ShutDownPage";
 export const WindowContext = React.createContext();
 
 function App() {
@@ -179,25 +180,27 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <div
-        className={`crt ${onAndOff.crt ? "null" : "none"}`}
-        style={{
-          height: "100vh",
-          width: "100vw",
-          position: "absolute",
-          top: 0,
-          left: 0,
-        }}
-        onClick={() => {
-          // setStartMenuOn(false);
-          setOnAndOff((prev) => {
-            return {
-              ...prev,
-              startMenu: false,
-            };
-          });
-        }}
-      />
+      {onAndOff.shutDownClicked ? null : (
+        <div
+          className={`crt ${onAndOff.crt ? "null" : "none"}`}
+          style={{
+            height: "100vh",
+            width: "100vw",
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+          onClick={() => {
+            // setStartMenuOn(false);
+            setOnAndOff((prev) => {
+              return {
+                ...prev,
+                startMenu: false,
+              };
+            });
+          }}
+        />
+      )}
       {onAndOff.shutDownClicked ? null : (
         <div
           style={{
@@ -252,6 +255,7 @@ function App() {
       {shutDown && onAndOff.shutDownClicked == false && (
         <SystemShutDown setShutDown={setShutDown} setOnAndOff={setOnAndOff} />
       )}
+      {onAndOff.shutDownClicked && <ShutDownPage />}
     </div>
     // </WindowContext.Provider>
   );
