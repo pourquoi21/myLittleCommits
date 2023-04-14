@@ -537,3 +537,35 @@ h4 > span {
   border: 0;
   height: 25px;
 } */
+
+.shutdown_page {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  color: white;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  animation: fadein 3s ease 1s;
+  -webkit-animation: fadein 3s; /* Safari and Chrome */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
