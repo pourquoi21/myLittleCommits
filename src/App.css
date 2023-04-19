@@ -548,7 +548,7 @@ h4 > span {
   font-size: 7vh;
   display: flex;
   justify-content: center;
-  animation: fadein 3s ease 3s;
+  animation: fadein 2s ease 3s;
   -webkit-animation: fadein 3s; /* Safari and Chrome */
 }
 
