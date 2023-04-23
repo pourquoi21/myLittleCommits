@@ -114,7 +114,10 @@ export default function DocumentMenu(props) {
                 되었습니다.
                 <br />
                 현재는 정보처리기사 자격증 취득을 위한 공부를 병행하고 있으며
-                <span style={{ fontSize: "14px" }}>(필기 합격)</span>,
+                <span style={{ fontSize: "14px" }}>
+                  (필기 합격, 실기 응시 후 결과 대기중)
+                </span>
+                ,
                 <br />
                 Notion에 배운 것을 기록하거나, GitHub에 1일 1커밋을 하려
                 노력합니다.
